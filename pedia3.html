@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pediatrics High-Yield Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --surface2: #f0ede6;
+    --border: #e0d9ce;
+    --text: #2c2416;
+    --text-sub: #6b5e4a;
+    --accent: #2a6b7c;
+    --accent2: #c8752a;
+    --accent3: #7c3a2a;
+    --pink: #e8c4c4;
+    --pink-text: #8b1a1a;
+    --yellow: #fdf3d0;
+    --yellow-text: #7a5c00;
+    --green: #d4edda;
+    --green-text: #1a5c2e;
+    --blue: #d0e8f5;
+    --blue-text: #0d3d5c;
+    --purple: #e8d4f0;
+    --purple-text: #4a1a6b;
+    --shadow: 0 2px 12px rgba(42,107,124,0.08);
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(135deg, #1a4a5a 0%, #2a6b7c 50%, #3a8a7c 100%);
+    color: #fff;
+    padding: 48px 40px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .hero p {
+    font-size: 1rem;
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .hero-tags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .hero-tag {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* NAV */
+  .nav-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .nav {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    padding: 14px 22px;
+    border: none;
+    background: transparent;
+    color: var(--text-sub);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.2px;
+  }
+  .nav-btn:hover { color: var(--accent); background: var(--surface2); }
+  .nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--surface2); }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+  }
+
+  /* SECTIONS */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title .icon { font-size: 1.2rem; }
+
+  /* SECTION HEADER */
+  .section-header {
+    background: linear-gradient(135deg, var(--accent) 0%, #3a8a7c 100%);
+    color: white;
+    padding: 20px 28px;
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  .section-header p {
+    opacity: 0.85;
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  /* TABLES */
+  .tbl-wrap { overflow-x: auto; margin: 12px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  thead tr { background: var(--accent); color: white; }
+  th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: var(--surface2); }
+  tr:hover td { background: #eef7f9; }
+
+  /* SEVERITY BADGES */
+  .badge-pink { background: var(--pink); color: var(--pink-text); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; }
+  .badge-yellow { background: var(--yellow); color: var(--yellow-text); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; }
+  .badge-green { background: var(--green); color: var(--green-text); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; }
+  .badge-blue { background: var(--blue); color: var(--blue-text); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; }
+
+  /* ROW COLORS */
+  .row-pink td { background: #fff0f0 !important; }
+  .row-yellow td { background: #fffbec !important; }
+  .row-green td { background: #f0faf4 !important; }
+  .row-blue td { background: #f0f6ff !important; }
+
+  /* ALERTS */
+  .alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .alert-red { background: #fff0f0; border-left: 4px solid #c0392b; color: #7b1a1a; }
+  .alert-yellow { background: var(--yellow); border-left: 4px solid #e6a817; color: #6b4a00; }
+  .alert-green { background: var(--green); border-left: 4px solid #27ae60; color: #1a4d2e; }
+  .alert-blue { background: var(--blue); border-left: 4px solid #2980b9; color: #0d3d5c; }
+  .alert-teal { background: #e6f7f8; border-left: 4px solid var(--accent); color: #1a4a5a; }
+
+  /* ALGORITHM BOX */
+  .algo {
+    background: #f8f0ff;
+    border: 2px solid #9b59b6;
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 12px 0;
+  }
+  .algo-title {
+    color: #6c3483;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .algo-step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .algo-num {
+    background: #9b59b6;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .algo-content { flex: 1; font-size: 0.9rem; }
+  .algo-arrow {
+    text-align: center;
+    color: #9b59b6;
+    font-size: 1.2rem;
+    margin: 4px 0;
+  }
+
+  /* PLAN BOXES */
+  .plan-a { background: #e8f5e9; border: 2px solid #27ae60; border-radius: 10px; padding: 16px; }
+  .plan-b { background: #fff8e1; border: 2px solid #f39c12; border-radius: 10px; padding: 16px; }
+  .plan-c { background: #fdecea; border: 2px solid #c0392b; border-radius: 10px; padding: 16px; }
+  .plan-title {
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .plan-a .plan-title { color: #1a5c2e; }
+  .plan-b .plan-title { color: #7a4a00; }
+  .plan-c .plan-title { color: #7b1a1a; }
+
+  /* KEYWORD CHIPS */
+  .chip-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+  .chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .chip-red { background: #fff0f0; border-color: #e8b4b4; color: var(--pink-text); }
+  .chip-orange { background: #fff5e6; border-color: #f5c99b; color: #7a3a00; }
+  .chip-green { background: var(--green); border-color: #a8d8b4; color: var(--green-text); }
+
+  /* MCQ */
+  .mcq-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .mcq-num {
+    position: absolute;
+    top: -12px; left: 20px;
+    background: var(--accent);
+    color: white;
+    padding: 3px 14px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .mcq-q {
+    font-weight: 600;
+    margin-bottom: 14px;
+    padding-top: 6px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .mcq-choices { list-style: none; display: grid; gap: 8px; }
+  .mcq-choice {
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    background: var(--surface);
+  }
+  .mcq-choice:hover { border-color: var(--accent); background: #eef7f9; }
+  .mcq-choice.correct { background: var(--green); border-color: #27ae60; color: var(--green-text); font-weight: 600; }
+  .mcq-choice.wrong { background: var(--pink); border-color: #e74c3c; color: var(--pink-text); }
+  .mcq-explain {
+    display: none;
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: #eef7f9;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+  .mcq-explain.show { display: block; }
+
+  /* BUZZWORDS */
+  .buzz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .buzz-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+  }
+  .buzz-term {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+  .buzz-def { font-size: 0.86rem; color: var(--text-sub); line-height: 1.5; }
+
+  /* SUBHEADING */
+  .subhead {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 20px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .subhead::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* LIST */
+  .hy-list { list-style: none; padding: 0; }
+  .hy-list li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f0ece4;
+  }
+  .hy-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+  .hy-list li:last-child { border-bottom: none; }
+
+  em { color: var(--accent2); font-style: normal; font-weight: 700; }
+  strong { color: var(--text); font-weight: 700; }
+  .red { color: #c0392b; font-weight: 700; }
+  .orange { color: #d35400; font-weight: 700; }
+  .teal { color: var(--accent); font-weight: 700; }
+
+  /* IV FLOW */
+  .flow-box {
+    background: #f5f0ff;
+    border: 2px dashed #9b59b6;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 0.88rem;
+  }
+  .flow-yes { color: #27ae60; font-weight: 700; }
+  .flow-no { color: #c0392b; font-weight: 700; }
+
+  /* Scroll to top */
+  .back-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(42,107,124,0.35);
+    transition: transform 0.2s;
+    z-index: 200;
+  }
+  .back-top:hover { transform: translateY(-3px); }
+
+  .score-bar {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.9rem;
+  }
+  .score-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .progress-bar {
+    flex: 1;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #3a8a7c);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🩺 Pediatrics Reviewer</h1>
+  <p>High-Yield · Block 3 · AY 2025–2026</p>
+  <div class="hero-tags">
+    <span class="hero-tag">IMCI</span>
+    <span class="hero-tag">Diarrhea & Dehydration</span>
+    <span class="hero-tag">Vomiting</span>
+    <span class="hero-tag">Upper RTI</span>
+    <span class="hero-tag">Lower RTI</span>
+    <span class="hero-tag">Treatment Plans</span>
+    <span class="hero-tag">MCQ Drill</span>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav">
+    <button class="nav-btn active" onclick="showSection('imci')">🏥 IMCI</button>
+    <button class="nav-btn" onclick="showSection('diarrhea')">💧 Diarrhea</button>
+    <button class="nav-btn" onclick="showSection('vomiting')">🤢 Vomiting</button>
+    <button class="nav-btn" onclick="showSection('ors')">🧂 ORS & Nutrition</button>
+    <button class="nav-btn" onclick="showSection('urti')">👃 URTI</button>
+    <button class="nav-btn" onclick="showSection('lrti')">🫁 LRTI</button>
+    <button class="nav-btn" onclick="showSection('cases')">📋 Cases</button>
+    <button class="nav-btn" onclick="showSection('mcq')">✏️ MCQ Drill</button>
+    <button class="nav-btn" onclick="showSection('buzz')">⚡ Buzzwords</button>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ==================== IMCI ==================== -->
+<div id="imci" class="section active">
+  <div class="section-header">
+    <h2>IMCI — Integrated Management of Childhood Illness</h2>
+    <p>WHO/UNICEF framework for children 0–5 years | Color-coded triage system</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="icon">📌</span> Key Facts</div>
+      <ul class="hy-list">
+        <li>Formulated by <em>WHO + UNICEF</em> (Philippines: + DOH)</li>
+        <li>Age groups: <em>Newborn–2 months</em> AND <em>2 months–5 years</em></li>
+        <li>Uses a <em>limited number of clinical signs</em> (sensitivity + specificity)</li>
+        <li>Leads to <strong>classification</strong> (not diagnosis) via color-coded triage</li>
+        <li>ALL sick children → check nutritional status, immunization, HIV (high-risk areas)</li>
+      </ul>
+      <div style="margin-top:14px;">
+        <p style="font-size:0.88rem; font-weight:600; color:var(--text-sub); margin-bottom:8px;">MAIN SYMPTOMS ASSESSED:</p>
+        <div class="grid-2" style="gap:8px;">
+          <div>
+            <p style="font-size:0.8rem; font-weight:700; color:var(--accent); margin-bottom:4px;">Older Children</p>
+            <ul class="hy-list" style="font-size:0.85rem;">
+              <li>Cough/difficult breathing</li>
+              <li>Diarrhea</li>
+              <li>Fever</li>
+              <li>Ear infection</li>
+            </ul>
+          </div>
+          <div>
+            <p style="font-size:0.8rem; font-weight:700; color:var(--accent); margin-bottom:4px;">Young Infants</p>
+            <ul class="hy-list" style="font-size:0.85rem;">
+              <li>Local bacterial infection</li>
+              <li>Diarrhea</li>
+              <li>Jaundice</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">🚦</span> Color-Coded Triage System ⭐⭐⭐</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Color</th><th>Indication</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr class="row-pink">
+              <td><span class="badge-pink">🔴 PINK</span></td>
+              <td><strong>Severe classification</strong><br>General danger signs present</td>
+              <td>Urgent hospital referral or admission</td>
+            </tr>
+            <tr class="row-yellow">
+              <td><span class="badge-yellow">🟡 YELLOW</span></td>
+              <td><strong>Some danger signs</strong><br>Moderate severity</td>
+              <td>Specific outpatient treatment</td>
+            </tr>
+            <tr class="row-green">
+              <td><span class="badge-green">🟢 GREEN</span></td>
+              <td><strong>No danger signs</strong><br>Most benign condition</td>
+              <td>Supportive home care</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="alert alert-yellow" style="margin-top:12px;">
+        <span>⚠️</span>
+        <span>If a child is <strong>YELLOW but develops severe signs</strong> → <em>upgrade to PINK</em> and provide urgent hospital care</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🔄</span> IMCI Return Immediately Signs ⭐⭐⭐</div>
+    <div class="grid-3">
+      <div>
+        <p style="font-weight:700; color:var(--accent); margin-bottom:8px; font-size:0.9rem;">Any Sick Child</p>
+        <ul class="hy-list">
+          <li>Cannot drink or breastfeed</li>
+          <li>Becomes sicker</li>
+          <li>Develops fever</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:700; color:var(--accent); margin-bottom:8px; font-size:0.9rem;">Child with Diarrhea</p>
+        <ul class="hy-list">
+          <li>Blood in stools</li>
+          <li>Drinking poorly</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:700; color:var(--accent); margin-bottom:8px; font-size:0.9rem;">Any Infant</p>
+        <ul class="hy-list">
+          <li>Breastfeeding poorly</li>
+          <li>Unusually cold</li>
+          <li>Palms & soles appear yellow (jaundice)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">📊</span> IMCI Diarrhea Initial Assessment</div>
+    <p style="font-size:0.9rem; margin-bottom:14px;">Ask: <em>"Does the child have diarrhea?"</em> → If YES, ask 3 key questions + look & feel</p>
+    <div class="grid-3" style="gap:12px; margin-bottom:14px;">
+      <div class="alert alert-blue">
+        <span>🕐</span>
+        <span><strong>Duration?</strong><br>&lt;14 days = Acute<br>≥14 days = Persistent</span>
+      </div>
+      <div class="alert alert-red">
+        <span>🩸</span>
+        <span><strong>Blood in stool?</strong><br>YES → Dysentery<br>(Shigella, Amoeba)</span>
+      </div>
+      <div class="alert alert-teal">
+        <span>👁️</span>
+        <span><strong>Look & Feel:</strong><br>Eyes, consciousness, thirst, skin pinch</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DIARRHEA ==================== -->
+<div id="diarrhea" class="section">
+  <div class="section-header">
+    <h2>Diarrhea — Classification & Management</h2>
+    <p>WHO Definition: ≥3 liquid stools/day OR more watery than normal | Consistency > Frequency ⭐</p>
+  </div>
+
+  <div class="subhead">Pathophysiology of Diarrhea ⭐⭐</div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Mechanism</th><th>Defect</th><th>Stool Character</th><th>Key Pathogens/Causes</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Secretory</strong></td>
+            <td>↓ Absorption, ↑ Secretion, electrolyte transport disorder</td>
+            <td>Watery, <em>normal osmolality</em>, persists with fasting</td>
+            <td>Cholera, toxigenic E. coli, VIP, C. difficile, Cryptosporidium</td>
+          </tr>
+          <tr>
+            <td><strong>Osmotic</strong></td>
+            <td>Maldigestion, unabsorbable solutes</td>
+            <td>Watery, ↑ osmolality, acidic, <em>STOPS with fasting</em></td>
+            <td>Lactase deficiency, glucose-galactose malabsorption, lactulose</td>
+          </tr>
+          <tr>
+            <td><strong>Hypermotility</strong></td>
+            <td>↓ Transit time → inadequate absorption</td>
+            <td>Loose to normal</td>
+            <td>IBS, thyrotoxicosis, post-vagotomy</td>
+          </tr>
+          <tr>
+            <td><strong>Hypomotility</strong></td>
+            <td>Neuromuscular defect → stasis → bacterial overgrowth</td>
+            <td>Loose to normal</td>
+            <td>Pseudoobstruction, blind loop</td>
+          </tr>
+          <tr>
+            <td><strong>Decreased Surface Area</strong></td>
+            <td>↓ Functional capacity</td>
+            <td>Watery</td>
+            <td>Short bowel syndrome, celiac, rotavirus enteritis</td>
+          </tr>
+          <tr>
+            <td><strong>Mucosal Invasion</strong></td>
+            <td>Inflammation, ↓ colonic absorption, villous destruction</td>
+            <td><em>Bloody</em>, WBCs in stool</td>
+            <td>Salmonella, Shigella, Amebiasis, Yersinia, Campylobacter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert alert-teal" style="margin-top:12px;">
+      <span>💡</span>
+      <span><strong>Key differentiator:</strong> Secretory diarrhea <em>persists during fasting</em>. Osmotic diarrhea <em>stops when fasting</em>.</span>
+    </div>
+  </div>
+
+  <div class="subhead">Dehydration Classification ⭐⭐⭐</div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th class="badge-green">MILD (3–5%)</th><th class="badge-yellow">MODERATE (6–9%)</th><th class="badge-pink">SEVERE (≥10%)</th></tr></thead>
+        <tbody>
+          <tr><td>Mental Status</td><td>Normal</td><td>Irritable</td><td class="red">Lethargic to comatose</td></tr>
+          <tr><td>Thirst</td><td>Slightly increased</td><td>Moderately increased</td><td class="red">Very thirsty / too weak to drink</td></tr>
+          <tr><td>Anterior Fontanelle</td><td>Normal</td><td>Sunken</td><td class="red">Very sunken</td></tr>
+          <tr><td>Eyes</td><td>Normal</td><td>Sunken</td><td class="red">Very sunken</td></tr>
+          <tr><td>Tears</td><td>Present</td><td>Reduced/Absent</td><td class="red">Absent</td></tr>
+          <tr><td>Mucous Membrane</td><td>Slightly dry</td><td>Dry</td><td class="red">Parched</td></tr>
+          <tr><td>Respiration</td><td>Normal</td><td>Deep/Rapid</td><td class="red">Deep/Rapid</td></tr>
+          <tr><td>Skin Retraction</td><td>Immediate</td><td class="orange">≤2 seconds (slow)</td><td class="red">&gt;2 seconds (very slow)</td></tr>
+          <tr><td>Radial Pulse, HR</td><td>Normal</td><td>Rapid, weak</td><td class="red">↑HR, N or ↓BP, feeble to absent</td></tr>
+          <tr><td>Extremities</td><td>Warm</td><td>Slightly cool</td><td class="red">Cool, mottled, acrocyanotic</td></tr>
+          <tr><td>Urine Flow</td><td>Slightly reduced</td><td>Reduced &lt;1 mL/kg/hr</td><td class="red">Oliguria/Anuria &lt;0.5 mL/kg/hr</td></tr>
+          <tr><td>Capillary Refill</td><td>Normal</td><td>≤2 secs</td><td class="red">&gt;2 secs</td></tr>
+          <tr><td>Fluid Deficit</td><td>3–5%</td><td>6–9%</td><td class="red">≥10% (≥100 mL/kg)</td></tr>
+          <tr><td>WHO Current Classification</td><td colspan="2" style="text-align:center;"><em>SOME Dehydration</em> (2+ moderate signs)</td><td><em>SEVERE Dehydration</em> (2+ severe signs)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert alert-yellow" style="margin-top:12px;">
+      <span>⭐</span>
+      <span><strong>Major signs (WHO Current):</strong> General condition, Thirst, Skin pinch — these are the KEY diagnostic signs. Need 2+ signs to classify.</span>
+    </div>
+  </div>
+
+  <div class="subhead">IMCI Diarrhea Classification & Management ⭐⭐⭐</div>
+
+  <div class="card">
+    <p style="font-weight:700; color:var(--text-sub); margin-bottom:12px;">ACUTE DIARRHEA (&lt;14 DAYS) — FOR DEHYDRATION</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Signs (Need 2+)</th><th>Classification</th><th>Management</th></tr></thead>
+        <tbody>
+          <tr class="row-pink">
+            <td>
+              • Lethargic or unconscious<br>
+              • Sunken eyes<br>
+              • <em>Not able to drink / drinking poorly</em><br>
+              • Skin pinch &gt;2 seconds
+            </td>
+            <td><span class="badge-pink">SEVERE DEHYDRATION</span></td>
+            <td>
+              <strong>No other severe class:</strong> <em>Plan C (IV fluids)</em><br>
+              <strong>Has another severe class:</strong> Refer URGENTLY + ORS sips on way<br>
+              If ≥2 yrs + cholera area → antibiotic for cholera
+            </td>
+          </tr>
+          <tr class="row-yellow">
+            <td>
+              • Restless, irritable<br>
+              • Sunken eyes<br>
+              • <em>Drinks eagerly, thirsty (still drinks!)</em><br>
+              • Skin pinch slow (≤2 sec)
+            </td>
+            <td><span class="badge-yellow">SOME DEHYDRATION</span></td>
+            <td>
+              <em>Plan B</em> (ORS, zinc, food)<br>
+              If also severe class → refer + ORS on way<br>
+              Continue breastfeeding<br>
+              Follow-up in <em>5 days</em>
+            </td>
+          </tr>
+          <tr class="row-green">
+            <td>
+              • Active, alert<br>
+              • Still able to drink<br>
+              • Skin pinch fast<br>
+              • Not enough signs for above
+            </td>
+            <td><span class="badge-green">NO DEHYDRATION</span></td>
+            <td>
+              <em>Plan A</em> (ORS, zinc, food at home)<br>
+              Advise when to return immediately<br>
+              Follow-up in <em>5 days</em>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="icon">📅</span> Persistent Diarrhea (≥14 days)</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Dehydration?</th><th>Classification</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr class="row-pink">
+              <td>PRESENT</td>
+              <td><span class="badge-pink">SEVERE PERSISTENT</span></td>
+              <td>Treat dehydration (Plan C) → <strong>Refer to hospital</strong></td>
+            </tr>
+            <tr class="row-yellow">
+              <td>ABSENT</td>
+              <td><span class="badge-yellow">PERSISTENT DIARRHEA</span></td>
+              <td>
+                Feed normally/breastfeed<br>
+                <em>Multivitamins + minerals (incl. zinc) × 14 days</em><br>
+                <em>Vitamin A</em><br>
+                Follow-up in 5 days
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">🩸</span> Dysentery (Blood in Stool)</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Sign</th><th>Classification</th><th>Treatment</th></tr></thead>
+          <tbody>
+            <tr class="row-pink">
+              <td>Blood in stool (acute or persistent)<br><small>Organisms: Shigella, Amoeba</small></td>
+              <td><span class="badge-pink">DYSENTERY</span></td>
+              <td>
+                <em>Ciprofloxacin × 3 days ⭐</em><br>
+                Monitor nutrition + ORS<br>
+                Follow-up in <strong>3 days</strong><br>
+                Advise return immediately
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="alert alert-red" style="margin-top:10px;">
+        <span>⚠️</span>
+        <span>Dysentery follow-up = <em>3 days</em> (not 5!) | Drug = <em>Ciprofloxacin</em></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead">Treatment Plans ⭐⭐⭐</div>
+  <div class="grid-3">
+    <div class="plan-a">
+      <div class="plan-title">📗 Plan A — Home Therapy</div>
+      <p style="font-size:0.82rem; color:#1a5c2e; font-weight:700; margin-bottom:6px;">For: NO DEHYDRATION</p>
+      <p style="font-size:0.85rem; font-weight:700; margin-bottom:6px;">4 Rules of Home Treatment:</p>
+      <ul class="hy-list" style="font-size:0.86rem;">
+        <li><strong>1. Extra Fluid</strong><br>&lt;2 yrs: 50–100 mL after each loose stool<br>≥2 yrs: 100–200 mL after each loose stool</li>
+        <li><strong>2. Zinc Supplements</strong><br>2–6 months: ½ tablet (10 mg) daily × 14 days<br>≥6 months: 1 tablet (20 mg) daily × 14 days</li>
+        <li><strong>3. Continue Feeding</strong><br>Exclusive BF if &lt;6 months</li>
+        <li><strong>4. When to Return</strong><br>(see return signs)</li>
+      </ul>
+    </div>
+    <div class="plan-b">
+      <div class="plan-title">📙 Plan B — Clinic ORS</div>
+      <p style="font-size:0.82rem; color:#7a4a00; font-weight:700; margin-bottom:6px;">For: SOME DEHYDRATION</p>
+      <ul class="hy-list" style="font-size:0.86rem;">
+        <li><strong>ORS over 4 hours in clinic</strong></li>
+        <li>ORS (mL) = weight (kg) × <em>75</em> ⭐</li>
+        <li>&lt;6 kg: 200–500 mL</li>
+        <li>6–9 kg: 450–800 mL</li>
+        <li>10–11 kg: 800–960 mL</li>
+        <li>12–19 kg: 960–1600 mL</li>
+        <li>Reassess after 4 hrs → choose plan A/B/C</li>
+        <li>No food during 4-hr period (except BF)</li>
+      </ul>
+    </div>
+    <div class="plan-c">
+      <div class="plan-title">📕 Plan C — IV Fluids</div>
+      <p style="font-size:0.82rem; color:#7b1a1a; font-weight:700; margin-bottom:6px;">For: SEVERE DEHYDRATION</p>
+      <ul class="hy-list" style="font-size:0.86rem;">
+        <li>IV fluid: <em>Ringer's Lactate</em> (or Normal Saline)</li>
+        <li>Total: <em>100 mL/kg</em></li>
+        <li><strong>Infants (&lt;12 months):</strong><br>30 mL/kg in <em>1 hour</em> → 70 mL/kg in <em>5 hours</em></li>
+        <li><strong>Children (1–5 yrs):</strong><br>30 mL/kg in <em>30 mins</em> → 70 mL/kg in <em>2.5 hours</em></li>
+        <li>*Repeat 30 mL/kg if radial pulse still weak</li>
+        <li>Reassess infant after <em>6 hrs</em>, child after <em>3 hrs</em></li>
+        <li>Also give ORS ~5 mL/kg/hr when child can drink</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="algo" style="margin-top:20px;">
+    <div class="algo-title">Plan C Algorithm — "Can you give IV?"</div>
+    <div class="algo-step">
+      <div class="algo-num">1</div>
+      <div class="algo-content">
+        <span class="flow-yes">YES: Can give IV immediately</span> → Start IV (Ringer's Lactate 100 mL/kg) immediately. If child can drink → give ORS while drip is set up.
+      </div>
+    </div>
+    <div class="algo-arrow">↓ if NO</div>
+    <div class="algo-step">
+      <div class="algo-num">2</div>
+      <div class="algo-content">
+        <span class="flow-yes">YES: IV available nearby (&lt;30 mins)</span> → Refer URGENTLY + ORS sips during trip
+      </div>
+    </div>
+    <div class="algo-arrow">↓ if NO</div>
+    <div class="algo-step">
+      <div class="algo-num">3</div>
+      <div class="algo-content">
+        <span class="flow-yes">YES: Trained for NGT + child can drink</span> → ORS via NGT: <em>20 mL/kg/hr × 6 hrs</em> (total 120 mL/kg). Reassess q1–2hrs.
+      </div>
+    </div>
+    <div class="algo-arrow">↓ if NO</div>
+    <div class="algo-step">
+      <div class="algo-num">4</div>
+      <div class="algo-content">
+        <span class="flow-no">NO to all</span> → Refer URGENTLY to hospital for IV or NGT treatment
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead">Persistent Diarrhea Follow-up (After 5 days)</div>
+  <div class="card">
+    <div class="grid-2">
+      <div>
+        <div class="alert alert-red">
+          <span>❌</span>
+          <span><strong>Diarrhea NOT stopped</strong> (≥3 stools/day)<br>→ Full reassessment<br>→ Treat dehydration if present<br>→ Refer to hospital if worsened</span>
+        </div>
+      </div>
+      <div>
+        <div class="alert alert-green">
+          <span>✅</span>
+          <span><strong>Diarrhea STOPPED</strong> (&lt;3 stools/day)<br>→ Tell mother to follow usual feeding recommendations for child's age</span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:10px; font-size:0.88rem; color:var(--text-sub);">Stool progression: Watery → Mushy → Semi-solid (shift may be gradual)</p>
+  </div>
+</div>
+
+<!-- ==================== VOMITING ==================== -->
+<div id="vomiting" class="section">
+  <div class="section-header">
+    <h2>Vomiting in Children</h2>
+    <p>Forceful expulsion of stomach contents — a coordinated reflex process | Not routinely treated</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🧠</span> Vomiting Center of the Brain ⭐</div>
+    <p style="font-size:0.9rem; margin-bottom:12px;">Located in the <em>area postrema (medulla)</em> — Central Processing Unit consists of:</p>
+    <div class="chip-wrap">
+      <span class="chip">Chemoreceptor Trigger Zone (CTZ)</span>
+      <span class="chip">Dorsal Motor Vagal Nucleus</span>
+      <span class="chip">Nucleus Tractus Solitarius</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🔀</span> 4 Pathways of Emetic Reflex ⭐⭐</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Pathway</th><th>Mechanism</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Mechanical</strong></td>
+            <td>Mechanoreceptors (bowel distension) + Chemoreceptors (irritants) in gut wall → vagal afferents</td>
+            <td>Bowel obstruction, food poisoning</td>
+          </tr>
+          <tr>
+            <td><strong>Bloodborne Toxins</strong></td>
+            <td>CTZ in area postrema responds to circulating neurotoxic agents</td>
+            <td><em>Cisplatin</em> (chemotherapy) ⭐</td>
+          </tr>
+          <tr>
+            <td><strong>Motion</strong></td>
+            <td>Vestibular system (M₁, H₁ receptors) → mismatch in body position perception</td>
+            <td>Motion sickness, car ride</td>
+          </tr>
+          <tr>
+            <td><strong>Emotion</strong></td>
+            <td>Higher cortical pathway → response to anxiety, fear, strong smells</td>
+            <td>Test anxiety, foul odors</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">⏱️</span> Types of Vomiting by Duration ⭐</div>
+    <div class="grid-3">
+      <div class="alert alert-red">
+        <div>
+          <strong>ACUTE</strong><br>
+          Rapid onset (24–48 hrs)<br>
+          Severe symptoms + dehydration<br>
+          <em>Examples:</em> Gastroenteritis, food poisoning, bowel obstruction
+        </div>
+      </div>
+      <div class="alert alert-yellow">
+        <div>
+          <strong>CHRONIC</strong><br>
+          Several days to weeks<br>
+          Low volume, infrequent<br>
+          <em>Examples:</em> PUD, gallbladder disease, gastritis, food reaction
+        </div>
+      </div>
+      <div class="alert alert-blue">
+        <div>
+          <strong>CYCLIC</strong><br>
+          Stereotypical + repetitive episodes<br>
+          Sudden onset + asymptomatic intervals ⭐<br>
+          <em>Example:</em> Cyclic vomiting syndrome
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="icon">🔴</span> Red Flags for Vomiting ⭐⭐</div>
+      <ul class="hy-list">
+        <li class="red">Hematemesis (blood in vomit = UGIB)</li>
+        <li class="red">Hematochezia (red/maroon stool = LGIB or massive UGIB)</li>
+        <li>Recurrent bilious emesis</li>
+        <li class="red">Clinical dehydration</li>
+        <li class="red">Evidence of shock</li>
+        <li>Focal neurologic changes</li>
+        <li>Abdominal distention</li>
+        <li>Absent or tympanitic bowel sounds</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon">💊</span> Treatment Principles</div>
+      <ul class="hy-list">
+        <li>Most children do <em>NOT</em> need treatment</li>
+        <li>If dehydrated → correct fluid + electrolyte abnormalities</li>
+        <li>Antiemetics/Prokinetics: <strong>NOT routinely given</strong></li>
+        <li>Only used to minimize vomiting while investigating etiology</li>
+        <li>Side effects: sedation, may interfere with hydration</li>
+      </ul>
+      <div class="alert alert-teal" style="margin-top:12px;">
+        <span>📋</span>
+        <span>Labs: Always check <em>serum electrolytes (Na⁺, K⁺, Cl⁻)</em> in all cases of vomiting with dehydration</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🔬</span> Types by Nature & Quality</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Category</th><th>Type</th><th>Associated With</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2"><strong>By Nature</strong></td><td>Projectile</td><td>CNS causes, <em>pyloric stenosis</em></td></tr>
+          <tr><td>Non-projectile</td><td>GERD</td></tr>
+          <tr><td rowspan="3"><strong>By Quality</strong></td><td>Bilious</td><td>Abdominal pain, obstruction below ampulla of Vater</td></tr>
+          <tr><td>Bloody</td><td>UGIB</td></tr>
+          <tr><td>Non-bloody, non-bilious</td><td>Emanating from the stomach</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ORS & NUTRITION ==================== -->
+<div id="ors" class="section">
+  <div class="section-header">
+    <h2>ORS & Nutrition in Diarrhea</h2>
+    <p>Joint WHO/UNICEF Statement (August 2024) | Reduced Osmolarity ORS is preferred ⭐</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🧂</span> ORS Composition — MEMORIZE ⭐⭐⭐</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Component</th><th>Standard WHO-ORS (mEq/mmol/L)</th><th>Reduced Osmolarity ORS ⭐</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Glucose</strong></td><td>111</td><td class="teal">75</td></tr>
+          <tr><td><strong>Sodium</strong></td><td>90</td><td class="teal">75</td></tr>
+          <tr><td>Chloride</td><td>80</td><td>65</td></tr>
+          <tr><td>Potassium</td><td>20</td><td>20</td></tr>
+          <tr><td>Citrate</td><td>10</td><td>10</td></tr>
+          <tr><td><strong>Osmolarity</strong></td><td>311</td><td class="teal">245</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert alert-teal" style="margin-top:12px;">
+      <span>⭐</span>
+      <span><strong>Reduced ORS advantages:</strong> ↓20% stool volume, ↓30% vomiting, ↓33% IV fluid use, promotes good water absorption</span>
+    </div>
+    <p style="margin-top:12px; font-size:0.88rem; color:var(--text-sub);">For <em>acute non-cholera diarrhea</em> (per 2024 WHO/UNICEF): Na 50–75 mEq/L | Glucose 75–90 mmol/L | Osmolarity 210–268 mOsm/L</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="icon">✅</span> Suitable Fluids</div>
+      <ul class="hy-list">
+        <li>ORS solution</li>
+        <li>Salted rice water</li>
+        <li>Salted yogurt drink</li>
+        <li>Vegetable or chicken soup with salt</li>
+        <li>Water in cereals (lugaw)</li>
+        <li>Plain water</li>
+        <li>Buko juice</li>
+        <li>Fresh, unsweetened juice</li>
+        <li>Weak, unsweetened tea</li>
+      </ul>
+      <p style="font-size:0.85rem; margin-top:10px; color:var(--green-text); font-weight:600;">Give as much as child wants until diarrhea stops ⭐</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon">❌</span> Unsuitable Fluids</div>
+      <ul class="hy-list">
+        <li class="red">Commercial carbonated beverages (Coke, Pepsi)</li>
+        <li class="red">Commercial fruit juices</li>
+        <li class="red">Sweetened tea</li>
+        <li class="red">Coffee</li>
+        <li class="red">Medicinal teas/infusions</li>
+      </ul>
+      <div class="alert alert-red" style="margin-top:12px;">
+        <span>⚠️</span>
+        <span>Sugary drinks → osmotic diarrhea + hypernatremia. Avoid drinks without salt AND sweetened drinks.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🌿</span> Zinc Supplementation ⭐⭐⭐</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Age</th><th>Zinc Syrup (20mg/5mL)</th><th>Zinc Drops (10mg/mL)</th><th>Zinc Tablet (20mg)</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr class="row-yellow">
+            <td><strong>2–6 months</strong></td>
+            <td>½ tsp (2.5 mL)</td>
+            <td>1.0 mL</td>
+            <td>½ tablet (10 mg)</td>
+            <td rowspan="2">14 days</td>
+          </tr>
+          <tr class="row-green">
+            <td><strong>≥6 months</strong></td>
+            <td>1 tsp (5 mL)</td>
+            <td>2.0 mL</td>
+            <td>1 tablet (20 mg)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-2" style="margin-top:14px; gap:12px;">
+      <div class="alert alert-teal">
+        <span>📌</span>
+        <span>Plays a central role in <em>cellular growth + immune function</em> ⭐<br>Given × 10–14 days to prevent recurrence in next 2–3 months</span>
+      </div>
+      <div class="alert alert-blue">
+        <span>💉</span>
+        <span><strong>Admin:</strong> Infants → dissolve in BM/ORS/water<br>Older children → chew or dissolve in water</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🍼</span> Diarrhea & Nutrition — Key Rules ⭐</div>
+    <div class="grid-2" style="gap:12px;">
+      <div>
+        <ul class="hy-list">
+          <li><em>Food should NEVER be withheld ⭐</em></li>
+          <li><em>Child's usual foods should NOT be diluted ⭐</em></li>
+          <li><em>Breastfeeding should ALWAYS be continued ⭐</em></li>
+          <li>Aim: Give as much nutrition-rich food as child will accept</li>
+          <li>Diet should be increased AFTER diarrhea stops</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:700; color:var(--accent); margin-bottom:8px; font-size:0.9rem;">Other Therapies:</p>
+        <ul class="hy-list">
+          <li><strong>Antimicrobials:</strong> NOT routinely given. Only if bacterial cause (Shigella, Salmonella, E. coli, Clostridium)</li>
+          <li><strong>Vitamin A:</strong> May be given in low-intake regions; important for immunity + epithelial lining</li>
+          <li><strong>Antimotility drugs:</strong> DANGEROUS — causes severe paralytic ileus</li>
+          <li><strong>Antiemetics:</strong> Causes sedation → fatal CNS toxicities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">💉</span> Electrolyte Imbalance Reference</div>
+    <div class="chip-wrap">
+      <span class="chip-red">HYPOnatremia: &lt;130 mmol/L</span>
+      <span class="chip-red">HYPERnatremia: &gt;150 mmol/L</span>
+      <span class="chip-red">HypoKALEMIA: &lt;3 mmol/L</span>
+    </div>
+    <p style="font-size:0.87rem; margin-top:10px; color:var(--text-sub);">ORS can adequately correct electrolyte imbalances in diarrhea when given appropriately.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🛡️</span> Prevention of Diarrhea</div>
+    <div class="chip-wrap">
+      <span class="chip">Safe drinking water</span>
+      <span class="chip">Improved sanitation</span>
+      <span class="chip chip-green">Handwashing with soap ⭐</span>
+      <span class="chip">Exclusive BF × 6 months</span>
+      <span class="chip">Good food hygiene</span>
+      <span class="chip chip-green">Rotavirus vaccine</span>
+      <span class="chip">Measles vaccine</span>
+      <span class="chip">Health education</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== URTI ==================== -->
+<div id="urti" class="section">
+  <div class="section-header">
+    <h2>Upper Respiratory Tract Infections (URTI)</h2>
+    <p>Airways from nostrils → vocal cords (larynx) | Mostly viral, self-limiting | Cutoff: Larynx/Voicebox</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">📊</span> URTI vs LRTI — Clues to Localize ⭐⭐</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>URTI</th><th>LRTI</th></tr></thead>
+        <tbody>
+          <tr><td>Cough</td><td>✅ Common</td><td>✅ Common</td></tr>
+          <tr><td>Fever</td><td>✅ Common</td><td>✅ Common</td></tr>
+          <tr><td>Sore Throat</td><td>✅ Common</td><td>❌ Not common</td></tr>
+          <tr><td>Voice Change</td><td>✅ Common</td><td>❌ Not common</td></tr>
+          <tr><td>Nasal Symptoms</td><td>✅ Common (viral vs bacterial clue)*</td><td>❌ Not common</td></tr>
+          <tr><td>Dyspnea</td><td>❌ Not common** </td><td>✅ Common</td></tr>
+          <tr><td>Chest Auscultation</td><td>Usually normal</td><td>Abnormal</td></tr>
+          <tr><td>Adventitious Sounds</td><td><em>Stridor</em> (inspiratory)</td><td><em>Crackles, Wheeze</em> (expiratory)</td></tr>
+          <tr><td>Neck stiffness/swelling</td><td>May be present</td><td>Unlikely</td></tr>
+          <tr><td>Drooling/Difficulty swallowing</td><td>May be present</td><td>Unlikely</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.8rem; color:var(--text-sub); margin-top:8px;">*Nasal symptoms sometimes used to differentiate viral vs bacterial | **Dyspnea may occur if airway is obstructed</p>
+    <p style="font-size:0.8rem; color:var(--text-sub);">Coarse crackles = bronchi (tubular airways) | Fine crackles = alveoli</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🦠</span> URTI Clinical Features → Diagnosis ⭐⭐⭐</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Clinical Features / Buzzwords</th><th>Diagnosis</th><th>Key Detail</th></tr></thead>
+        <tbody>
+          <tr class="row-yellow">
+            <td>Sore throat, <em>fever, tonsillar exudates, NO cough</em></td>
+            <td><strong>Streptococcal Pharyngitis (GAS)</strong></td>
+            <td>GAS causes 15–30% pharyngitis; 1st line = Penicillin/Amoxicillin × 10 days</td>
+          </tr>
+          <tr>
+            <td>Sore throat, <em>cough, hoarseness</em></td>
+            <td><strong>Viral Pharyngitis/Laryngitis</strong></td>
+            <td>Mild, rhinorrhea + cough present (vs GAS → no cough)</td>
+          </tr>
+          <tr class="row-yellow">
+            <td>Facial pain/pressure, <em>purulent nasal discharge &gt;10 days</em>, nasal congestion</td>
+            <td><strong>Acute Bacterial Sinusitis</strong></td>
+            <td>Tx: Amoxicillin 45 mg/kg/d × 10 days or 7 days after resolution</td>
+          </tr>
+          <tr>
+            <td>Rhinorrhea, nasal congestion, sneezing, ± mild cough/fever</td>
+            <td><strong>Common Cold</strong></td>
+            <td>Most common cause: Rhinovirus. Self-limiting. NO antibiotics.</td>
+          </tr>
+          <tr class="row-yellow">
+            <td><em>Barky cough, inspiratory stridor, hoarseness</em>, URI prodrome, low-grade fever</td>
+            <td><strong>Croup (Laryngotracheobronchitis)</strong></td>
+            <td>Steeple sign on X-ray. Parainfluenza type 1. Tx: Dexamethasone 0.6 mg/kg</td>
+          </tr>
+          <tr class="row-pink">
+            <td><em>Sudden HIGH fever, drooling, muffled voice, tripod position</em></td>
+            <td><strong>Epiglottitis</strong></td>
+            <td>Thumbprint sign. H. influenzae. EMERGENCY — secure airway first!</td>
+          </tr>
+          <tr class="row-yellow">
+            <td>Progressive sore throat, <em>unilateral swelling, uvula deviation, trismus</em></td>
+            <td><strong>Peritonsillar Abscess</strong></td>
+            <td>Hot potato voice. GAS + anaerobes. Needle aspiration/I&D</td>
+          </tr>
+          <tr class="row-pink">
+            <td>Fever, <em>neck stiffness, dysphagia, drooling, neck swelling</em>, bulge BEHIND uvula</td>
+            <td><strong>Retropharyngeal Abscess</strong></td>
+            <td>More common in children &lt;6 yrs. Polymicrobial. Neck CT.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="subhead">Common Cold — Key Points</div>
+  <div class="grid-2">
+    <div class="card">
+      <ul class="hy-list">
+        <li>Infection limited to <em>nasal epithelium</em></li>
+        <li>Most common cause: <em>Rhinovirus</em></li>
+        <li>Young children: up to 8 bouts/year; adults: 3–6/year</li>
+        <li>Symptoms persist <em>≥10 days</em> in kids (vs 5–7 days in adults)</li>
+        <li>Greenish phlegm ≠ bacterial infection (especially in infants)</li>
+        <li>Sinusitis NOT a differential if sinuses not yet developed (young infants)</li>
+        <li>IL-8 concentration = symptom severity marker</li>
+        <li>Bradykinin → sore throat and rhinitis</li>
+        <li>Self-limiting: viral shedding peaks 3–5 days post-infection</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p style="font-weight:700; color:var(--pink-text); margin-bottom:8px;">INEFFECTIVE / Not Given:</p>
+      <div class="chip-wrap">
+        <span class="chip-red">Cough suppressants</span>
+        <span class="chip-red">Antibiotics</span>
+        <span class="chip-red">Bronchodilators*</span>
+        <span class="chip-red">Warm humidified air</span>
+        <span class="chip-red">Echinacea</span>
+        <span class="chip-red">High-dose Vitamin C</span>
+      </div>
+      <p style="font-size:0.8rem; color:var(--text-sub); margin-top:6px;">*except virus-induced reactive airway disease</p>
+      <p style="font-weight:700; color:var(--green-text); margin-top:12px; margin-bottom:8px;">Supportive Measures:</p>
+      <div class="chip-wrap">
+        <span class="chip-green">Oral hydration</span>
+        <span class="chip-green">Nasal saline</span>
+        <span class="chip-green">Paracetamol (fever/pain)</span>
+        <span class="chip-green">Oxymetazoline (limited)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead">Croup vs Epiglottitis ⭐⭐⭐</div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>Croup (LTB)</th><th>Epiglottitis</th></tr></thead>
+        <tbody>
+          <tr><td>Age</td><td>6 months – 3 years (peak yr 2)</td><td>2–6 years</td></tr>
+          <tr><td>Location</td><td><em>Subglottic</em></td><td><em>Supraglottic</em></td></tr>
+          <tr><td>Onset</td><td>Gradual (URI prodrome 1–3 days)</td><td class="red">Sudden/rapid, HIGH fever</td></tr>
+          <tr><td>Fever</td><td>&lt;38.5°C, low-grade</td><td class="red">&gt;39°C</td></tr>
+          <tr><td>Classic Symptoms</td><td><em>Barky "seal-like" cough + hoarseness + inspiratory stridor</em></td><td class="red"><em>4 D's: Dysphagia, Dysphonia, Drooling, Distress</em></td></tr>
+          <tr><td>Voice</td><td>Hoarse</td><td><em>Muffled voice</em></td></tr>
+          <tr><td>Drooling</td><td>Uncommon</td><td class="red">PRESENT</td></tr>
+          <tr><td>Position</td><td>May prefer upright</td><td class="red">TRIPOD position, refuses to lie down</td></tr>
+          <tr><td>Etiology</td><td>Parainfluenza virus type 1 (most common)</td><td><em>H. influenzae type B</em> (most common)</td></tr>
+          <tr><td>X-ray Sign</td><td><em>Steeple sign</em> (subglottic narrowing, AP view)</td><td><em>Thumbprint sign</em> (lateral neck, thickened epiglottis)</td></tr>
+          <tr><td>WBC</td><td>Normal</td><td>Leukocytosis + ↑neutrophils</td></tr>
+          <tr><td>Management</td><td>Dexamethasone 0.6 mg/kg (single dose) + racemic epinephrine (if stridor at rest)</td><td class="red">AIRWAY EMERGENCY — intubate! Ceftriaxone IV × 10 days</td></tr>
+          <tr><td>Key Warning</td><td>Self-limiting (3–7 days); agitation worsens symptoms</td><td class="red">Do NOT ask child to lie down! → respiratory arrest</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="subhead">Peritonsillar vs Retropharyngeal Abscess ⭐</div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>Peritonsillar Abscess</th><th>Retropharyngeal Abscess</th></tr></thead>
+        <tbody>
+          <tr><td>Age</td><td><em>&gt;10 years</em> (adolescents)</td><td><em>&lt;6 years</em></td></tr>
+          <tr><td>PE finding</td><td><em>Asymmetric tonsillar bulge + uvula deviation ⭐</em></td><td>Bulging of <em>posterior pharyngeal wall</em></td></tr>
+          <tr><td>Voice</td><td><em>"Hot potato voice"</em></td><td>Muffled voice, may have stridor</td></tr>
+          <tr><td>Neck</td><td>Trismus</td><td>Neck stiffness, torticollis</td></tr>
+          <tr><td>Etiology</td><td>GAS + mixed oropharyngeal anaerobes</td><td>Polymicrobial</td></tr>
+          <tr><td>Diagnosis</td><td>Asymmetric tonsillar bulge; CT/US</td><td>CT scan; lateral neck X-ray</td></tr>
+          <tr><td>Treatment</td><td>Needle aspiration; amoxiclav/clindamycin; tonsillectomy if recurrent</td><td>IV antibiotics + drainage if needed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="subhead">Bacterial Sinusitis ⭐</div>
+  <div class="card">
+    <div class="grid-2">
+      <div>
+        <p style="font-weight:700; color:var(--accent); margin-bottom:8px; font-size:0.9rem;">Sinus Development (E-M-S-F) ⭐</p>
+        <ul class="hy-list">
+          <li><strong>Ethmoid</strong> – Present at birth, pneumatized at birth</li>
+          <li><strong>Maxillary</strong> – Present at birth, pneumatized at 4 years</li>
+          <li><strong>Sphenoidal</strong> – Develops at 5 years</li>
+          <li><strong>Frontal</strong> – Develops at 7–8 years</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:700; color:var(--accent); margin-bottom:8px; font-size:0.9rem;">Viral vs Bacterial Sinusitis</p>
+        <ul class="hy-list">
+          <li>Viral: 2–7 days, rhinorrhea + sneezing, self-limiting</li>
+          <li>Bacterial: <em>&gt;5–7 days</em>, purulent discharge, facial pain/pressure, fever recurrence</li>
+          <li>Bacterial bugs: S. pneumoniae, H. influenzae, Moraxella catarrhalis, S. aureus</li>
+          <li>Treatment: <em>Amoxicillin 45 mg/kg/d</em> × 10 days or 7 days after resolution</li>
+          <li>Complications: Periorbital cellulitis, orbital cellulitis (proptosis, ↓VA), intracranial infection</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead">Pertussis (Whooping Cough) ⭐⭐</div>
+  <div class="card">
+    <p style="font-size:0.9rem; margin-bottom:14px;">Causative agent: <em>Bordetella pertussis</em> (Gram-negative coccobacillus) | Transmission: droplet</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Phase</th><th>Duration</th><th>Key Features</th></tr></thead>
+        <tbody>
+          <tr class="row-yellow">
+            <td><strong>Catarrhal</strong></td>
+            <td>1–2 weeks</td>
+            <td><em>Most infectious phase ⭐</em>. Coryza, mild cough, sneezing, low fever. Similar to URTI.</td>
+          </tr>
+          <tr class="row-pink">
+            <td><strong>Paroxysmal</strong></td>
+            <td>Weeks</td>
+            <td><em>Staccato cough + inspiratory "whoop"</em>. Fever disappears. Worse at NIGHT. Post-tussive vomiting. Cyanosis, apnea, diaphoresis possible. Antibiotics NOT effective here.</td>
+          </tr>
+          <tr class="row-green">
+            <td><strong>Convalescent</strong></td>
+            <td>Weeks–months</td>
+            <td>Residual cough triggered by irritants or another URI</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-2" style="margin-top:14px; gap:12px;">
+      <div class="alert alert-teal">
+        <span>💊</span>
+        <span><strong>Treatment:</strong> Macrolides (<em>Erythromycin 1st choice</em>, Azithromycin, Clarithromycin)<br>Goal: ↓ carriage/spread, not stop infection<br>Minimal improvement if given in catarrhal phase<br>NOT effective in paroxysmal phase</span>
+      </div>
+      <div class="alert alert-yellow">
+        <span>⚠️</span>
+        <span><strong>Lab clue:</strong> Leukemoid reaction (↑↑ WBC = severe infection)<br><strong>Most dangerous to:</strong> Infants<br><strong>Gold standard Dx:</strong> Nasopharyngeal culture; PCR also used<br>Immunity wanes 7–12 years post-vaccination/infection</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead">GAS Pharyngitis ⭐</div>
+  <div class="card">
+    <div class="grid-2">
+      <div>
+        <p style="font-weight:700; margin-bottom:8px; font-size:0.9rem;">Clinical Features of GAS:</p>
+        <ul class="hy-list">
+          <li>Rapid onset sore throat + fever</li>
+          <li>Red pharynx, enlarged tonsils, <em>white/yellow exudates</em></li>
+          <li>Petechiae / doughnut lesions on soft palate</li>
+          <li><em>Strawberry tongue</em> (white then red)</li>
+          <li>Enlarged, tender <em>anterior</em> cervical lymph nodes</li>
+          <li>Associated: headache, abdominal pain, vomiting, ear pain</li>
+          <li><em>NO cough, NO rhinorrhea</em> (vs viral pharyngitis)</li>
+          <li>Scarlet fever: red papular rash starting from face → spreads</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:700; margin-bottom:8px; font-size:0.9rem;">Management:</p>
+        <ul class="hy-list">
+          <li>Gold standard Dx: Throat culture (blood agar)</li>
+          <li>RADT: very high specificity (&gt;95%); if (+) no culture needed; if (−) confirm with culture</li>
+          <li>McIsaac score criteria (each = +1 pt): Fever &gt;38°C, No cough, Tender anterior nodes, Tonsillar swelling/exudate, Age 3–14</li>
+          <li><em>1st line: Penicillin/Amoxicillin × 10 days</em></li>
+          <li>Penicillin-allergic: Cephalosporins (mild) or Macrolides/Clindamycin (severe)</li>
+          <li>Goal: <em>Prevent Acute Rheumatic Fever</em> (if started ≤10 days)</li>
+          <li>NO effect on APSGN (post-streptococcal GN)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== LRTI ==================== -->
+<div id="lrti" class="section">
+  <div class="section-header">
+    <h2>Lower Respiratory Tract Infections (LRTI)</h2>
+    <p>Trachea, bronchi, bronchioles, alveoli | Pneumonia is the leading infectious cause of death in children &lt;5 globally</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🫁</span> LRTI Clinical Features → Diagnosis ⭐⭐⭐</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Clinical Features</th><th>Diagnosis</th><th>Key Points</th></tr></thead>
+        <tbody>
+          <tr class="row-yellow">
+            <td>Gradual onset, <em>mild fever, wheezing, crackles</em>, often in <em>&lt;2 years old</em></td>
+            <td><strong>Viral Pneumonia</strong></td>
+            <td>Alveoli affected. WBC normal or mildly ↑ (&lt;20,000), lymphocyte predominance. No pleural effusion. No wheezing typically.</td>
+          </tr>
+          <tr class="row-pink">
+            <td><em>Sudden high fever, toxic appearance, productive cough, focal crackles</em></td>
+            <td><strong>Bacterial Pneumonia</strong></td>
+            <td>Lobar consolidation. WBC 15,000–40,000, PMN predominance. Pleural effusion possible. S. pneumoniae most common.</td>
+          </tr>
+          <tr class="row-yellow">
+            <td>Cough, <em>wheezing, nasal flaring, intercostal retractions, low O₂ saturation</em></td>
+            <td><strong>Bronchiolitis</strong></td>
+            <td>Bronchioles affected. RSV #1 cause (&gt;90%). Wheezing so pronounced may be audible without stethoscope. Age &lt;2 years.</td>
+          </tr>
+          <tr>
+            <td><em>Persistent dry cough, minimal findings, school-age children</em></td>
+            <td><strong>Atypical Pneumonia</strong></td>
+            <td>Mycoplasma/Chlamydia. Afebrile or low-grade fever. Only ~10% with high fever. Epidemics every 3–7 years.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="subhead">Pneumonia — Age-Specific Pathogens ⭐⭐</div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Age Group</th><th>Common Viral Cause</th><th>Common Bacterial Cause</th></tr></thead>
+        <tbody>
+          <tr class="row-yellow">
+            <td><strong>Neonates (&lt;3 weeks)</strong></td>
+            <td>—</td>
+            <td><em>Group B Streptococci</em>, E. coli, gram-negative bacilli</td>
+          </tr>
+          <tr>
+            <td><strong>3 wks – 4 years</strong></td>
+            <td>RSV, Rhinovirus, Influenza, Parainfluenza, HMPV</td>
+            <td><em>S. pneumoniae</em> (most common in 3 wks–4 yrs)</td>
+          </tr>
+          <tr class="row-yellow">
+            <td><strong>≥5 years</strong></td>
+            <td>Same viruses (less common)</td>
+            <td><em>M. pneumoniae, C. pneumoniae</em> (atypical dominant)</td>
+          </tr>
+          <tr>
+            <td><strong>Major causes of hospitalization/death (all ages)</strong></td>
+            <td colspan="2"><em>S. pneumoniae, H. influenzae type b, S. aureus</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert alert-teal" style="margin-top:12px;">
+      <span>⭐</span>
+      <span><strong>Viruses are the USUAL cause</strong> of LRTI in 1 month–5 year olds. RSV = most common cause of viral bronchiolitis and viral pneumonia.</span>
+    </div>
+  </div>
+
+  <div class="subhead">Bronchiolitis ⭐⭐</div>
+  <div class="card">
+    <div class="grid-2">
+      <div>
+        <ul class="hy-list">
+          <li>Most common in infants; leading cause of morbidity/mortality in infants</li>
+          <li>Pathology: <em>airway edema + ↑ mucus production + necrosis of airway epithelium</em> → inflammation + edema + necrosis → bronchospasm</li>
+          <li>RSV = #1 cause (&gt;90%)</li>
+          <li>PE: Diffuse wheezing, crackles, coarse prolonged expiratory phase, transmitted upper airway sounds</li>
+          <li>Wheezing may be heard without stethoscope</li>
+          <li>Routine chest X-ray: NOT recommended</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-weight:700; color:var(--pink-text); margin-bottom:8px; font-size:0.9rem;">NOT Routinely Recommended:</p>
+        <div class="chip-wrap">
+          <span class="chip-red">Bronchodilators</span>
+          <span class="chip-red">Steroids</span>
+          <span class="chip-red">Antibiotics</span>
+          <span class="chip-red">Nebulizers (NSS)</span>
+          <span class="chip-red">Antivirals</span>
+        </div>
+        <div class="alert alert-green" style="margin-top:12px;">
+          <span>✅</span>
+          <span><strong>Treatment:</strong> Supportive only. Assess hydration + oxygenation. RSV vaccine available in USA, not yet in Philippines.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead">Pneumonia — Diagnosis & Treatment ⭐</div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>Viral Pneumonia</th><th>Bacterial Pneumonia</th></tr></thead>
+        <tbody>
+          <tr><td>WBC</td><td>Normal/mildly elevated (&lt;20,000/mm³)</td><td>15,000–40,000/mm³</td></tr>
+          <tr><td>Differential</td><td>Lymphocyte predominance</td><td>PMN predominance</td></tr>
+          <tr><td>X-ray</td><td>Hyperinflation, bilateral interstitial infiltrates, peribronchial cuffing</td><td>Lobar consolidation (pneumococcal)</td></tr>
+          <tr><td>Wheeze</td><td>NOT common</td><td>More common</td></tr>
+          <tr><td>Pleural effusion</td><td>NOT common</td><td>More common</td></tr>
+          <tr><td>Treatment</td><td>Supportive (oxygenation, hydration, fever control)</td><td>Antibiotics based on severity</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid-2" style="margin-top:14px; gap:12px;">
+      <div class="alert alert-blue">
+        <span>💊</span>
+        <span><strong>Outpatient:</strong> High-dose amoxicillin (90 mg/kg/day BID) — 1st line<br>Alternatives: Cefuroxime, Amox-clav<br>Atypicals: Azithromycin (preferred), Clarithromycin</span>
+      </div>
+      <div class="alert alert-red">
+        <span>🏥</span>
+        <span><strong>Inpatient:</strong> Mild → IV ampicillin/penicillin G<br>Moderate-severe → IV Ceftriaxone/Cefotaxime<br>S. aureus suspected → add Vancomycin/Clindamycin<br>Response expected in <em>48–72 hours</em></span>
+      </div>
+    </div>
+    <div class="alert alert-yellow" style="margin-top:10px;">
+      <span>⭐</span>
+      <span>If no clinical improvement → think: Complications, Bacterial resistance, Non-bacterial cause, Bronchial obstruction, Pre-existing disease, Non-infectious cause. | <strong>Zinc is NOT a treatment for pneumonia</strong> (only preventive strategy).</span>
+    </div>
+  </div>
+
+  <div class="subhead">Atypical Pneumonia ⭐</div>
+  <div class="card">
+    <div class="grid-2">
+      <div>
+        <ul class="hy-list">
+          <li>Organisms: <em>Mycoplasma pneumoniae, Chlamydia pneumoniae</em>, respiratory viruses</li>
+          <li>NOT identified with standard bacterial cultures or Gram stain</li>
+          <li>Common in <em>school-aged children and adolescents</em></li>
+          <li>Causes up to <em>1/3 of CAP in children 5–15 yrs</em></li>
+          <li><em>Epidemics every 3–7 years</em></li>
+          <li>Peak: winter and early spring</li>
+          <li>Only ~10% present with high fever</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="hy-list">
+          <li>CXR: diffuse/patchy interstitial infiltrates (worse than clinical signs)</li>
+          <li>Blood cultures: usually negative; WBC normal or mildly elevated</li>
+          <li>Consider if <em>no response to beta-lactams</em></li>
+          <li><em>Treatment: Macrolides (Azithromycin preferred)</em></li>
+          <li>Bullous myringitis = rare but associated with M. pneumoniae</li>
+          <li>M. pneumoniae complications: hemolytic anemia, SJS, myocarditis, encephalitis</li>
+          <li>C. pneumoniae: associated with reactive airway disease</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🚨</span> Respiratory Distress Assessment ⭐</div>
+    <div class="alert alert-red">
+      <span>🔴</span>
+      <span><strong>First question to answer ALWAYS:</strong> Is the patient in respiratory distress or hypoxemic? Correct hypoxemia FIRST before taking history/PE. Position patient, oxygen support, ventilation.</span>
+    </div>
+    <div class="grid-2" style="margin-top:12px; gap:12px;">
+      <div>
+        <p style="font-weight:700; margin-bottom:8px; font-size:0.9rem;">Signs of Respiratory Distress:</p>
+        <div class="chip-wrap">
+          <span class="chip-red">Tachypnea</span>
+          <span class="chip-red">Retractions (intercostal, subcostal, supraclavicular)</span>
+          <span class="chip-red">Nasal flaring</span>
+          <span class="chip-red">Grunting</span>
+          <span class="chip-red">Cyanosis</span>
+          <span class="chip-red">Paradoxical breathing</span>
+        </div>
+      </div>
+      <div>
+        <p style="font-weight:700; margin-bottom:8px; font-size:0.9rem;">Approach to Respiratory Patient:</p>
+        <ul class="hy-list" style="font-size:0.87rem;">
+          <li><strong>Step 1:</strong> Assess severity + correct hypoxemia</li>
+          <li><strong>Step 2:</strong> Full history + PE (after stable)</li>
+          <li><strong>Step 3:</strong> Organize differential diagnoses</li>
+          <li><strong>Step 4:</strong> Diagnostic + management plan</li>
+          <li>Rule: <em>LOCALIZE before you DIAGNOSE</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🔴</span> Red Flag: Recurrent Pneumonia ⭐</div>
+    <div class="alert alert-red">
+      <span>⚠️</span>
+      <span>Consider <strong>ABNORMAL pulmonary events</strong> if: &gt;2 episodes of pneumonia in a year OR &gt;3 episodes of pneumonia overall → Requires further evaluation (immunodeficiency, anatomic abnormality, etc.)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CASES ==================== -->
+<div id="cases" class="section">
+  <div class="section-header">
+    <h2>Case-Based Review</h2>
+    <p>Apply your knowledge — identify the diagnosis and management plan</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">📋</span> IMCI Diarrhea Case Scenarios ⭐⭐⭐</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Case</th><th>Key Findings</th><th>IMCI Classification</th><th>Management</th></tr></thead>
+        <tbody>
+          <tr class="row-green">
+            <td>4-yr-old, non-bloody watery stools 2–3x/day × 2 days, active, eats/drinks, fast skin pinch, no fever</td>
+            <td>Active, alert, drinks well, fast skin pinch</td>
+            <td><span class="badge-green">Acute Diarrhea, No Dehydration</span></td>
+            <td>Plan A + advise return signs + follow-up 5 days</td>
+          </tr>
+          <tr class="row-yellow">
+            <td>6-mo-old, watery stools 4–5x/day × 3 days, crying, drinks eagerly, sunken eyes, skin pinch slow, occasional vomiting</td>
+            <td>Restless/irritable, sunken eyes, drinks eagerly (still drinks!), slow skin pinch</td>
+            <td><span class="badge-yellow">Acute Diarrhea, SOME Dehydration</span></td>
+            <td>Plan B + zinc + advise return + follow-up 5 days</td>
+          </tr>
+          <tr class="row-pink">
+            <td>3-mo-old, watery stools 6–10x/day × 5 days, sleeping most of the time, poor suck, sunken eyes, cracked lips, dry diapers</td>
+            <td>Lethargic, sunken eyes, drinks poorly, very slow skin pinch (&gt;2 sec)</td>
+            <td><span class="badge-pink">Acute Diarrhea, SEVERE Dehydration</span></td>
+            <td>Plan C (IV fluids) OR refer urgently if another severe classification</td>
+          </tr>
+          <tr class="row-yellow">
+            <td>1-yr-old, watery stools 3–4x/day × 2 weeks, no fever, active, eating/drinking well</td>
+            <td>Duration ≥14 days, no dehydration signs</td>
+            <td><span class="badge-yellow">Persistent Diarrhea, No Dehydration</span></td>
+            <td>Multivitamins + minerals (incl. zinc) × 14 days + Vitamin A + follow-up 5 days</td>
+          </tr>
+          <tr class="row-pink">
+            <td>3-yr-old, watery stools × 5 days, now with blood in stool + crampy abdominal pain, eats/drinks without vomiting</td>
+            <td>Blood in stool</td>
+            <td><span class="badge-pink">DYSENTERY, No Dehydration</span></td>
+            <td>Ciprofloxacin × 3 days + follow-up 3 days + advise return signs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🫁</span> Respiratory Infection Case Scenarios ⭐⭐⭐</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Case Profile</th><th>Key Buzzwords</th><th>Diagnosis</th><th>Tx Pearl</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>4-month-old, 2nd week of illness, repetitive bothersome cough, post-tussive vomiting, missed vaccines, afebrile</td>
+            <td>Whooping/repetitive cough, missed DPT, leukemoid reaction possible</td>
+            <td><strong>Pertussis</strong> (Paroxysmal stage)</td>
+            <td>Erythromycin/Azithromycin (goal: ↓ spread)</td>
+          </tr>
+          <tr>
+            <td>1-year-old, colds × 5 days → low grade fever → fast breathing, wheezing on auscultation, occasional crackles, mom also had colds</td>
+            <td>Wheezing, crackles, &lt;2 years, post-URI, RSV likely</td>
+            <td><strong>Bronchiolitis</strong></td>
+            <td>Supportive only (no bronchodilators, steroids, antibiotics)</td>
+          </tr>
+          <tr>
+            <td>4-month-old, colds → greenish phlegm, afebrile, clear breath sounds</td>
+            <td>Greenish phlegm (NOT = bacterial), clear lungs, afebrile</td>
+            <td><strong>Common Cold</strong></td>
+            <td>Supportive only. No antibiotics. Sinusitis NOT a differential (sinuses not developed)</td>
+          </tr>
+          <tr>
+            <td>4-month-old, cold → mild fever → more severe cough, fast breathing, crackles + occasional wheeze</td>
+            <td>Crackles bilateral, mild fever, gradual onset, &lt;2 yrs</td>
+            <td><strong>Viral Pneumonia</strong></td>
+            <td>Oxygenation, hydration, fever control. No CBC needed unless prolonged fever.</td>
+          </tr>
+          <tr>
+            <td>3-year-old, fever 39°C × 4 days, productive cough, crackles + decreased BS right lower lung, dullness to percussion right lower lung</td>
+            <td>Focal crackles, dullness, toxic appearing, consolidation/effusion</td>
+            <td><strong>Bacterial CAP</strong></td>
+            <td>IV antibiotics (ampicillin or ceftriaxone depending on severity)</td>
+          </tr>
+          <tr>
+            <td>10-year-old, cough × 2 weeks, NO fever, able to go to school initially, now worse, occasional crackles left lower lung, HR 80</td>
+            <td>Persistent dry cough, minimal findings, school-age, afebrile</td>
+            <td><strong>Atypical Pneumonia</strong></td>
+            <td>Azithromycin (Mycoplasma coverage)</td>
+          </tr>
+          <tr>
+            <td>16-year-old female, fever recurred after 1 week, severe sore throat extending to L ear, difficulty opening mouth, drooling, foul breath</td>
+            <td>Hot potato voice, trismus, uvula deviation, asymmetric tonsillar bulge, older patient</td>
+            <td><strong>Peritonsillar Abscess</strong></td>
+            <td>Needle aspiration + amoxiclav/clindamycin; tonsillectomy if recurrent</td>
+          </tr>
+          <tr>
+            <td>12-year-old, colds 2 weeks ago → fever recurred 39°C, nasal congestion, headache, purulent discharge, tender malar area</td>
+            <td>Recurrent fever after viral URI, purulent discharge &gt;10 days, facial pain</td>
+            <td><strong>Bacterial Sinusitis</strong></td>
+            <td>Amoxicillin 45 mg/kg/d × 10 days (or 7 days after resolution)</td>
+          </tr>
+          <tr>
+            <td>3-year-old, fever 1 day, difficulty swallowing → difficulty breathing, drooling, tripod position, refuses to lie down, noisy breathing</td>
+            <td>4 D's, tripod, sudden onset, high fever, thumbprint sign on X-ray</td>
+            <td><strong>Epiglottitis</strong></td>
+            <td>MEDICAL EMERGENCY: Secure airway first! Ceftriaxone IV × 10 days. Do NOT lie patient down.</td>
+          </tr>
+          <tr>
+            <td>3-year-old, colds + low-grade fever × 4 days → barking cough + hoarseness → inspiratory stridor, no crackles/wheeze</td>
+            <td>Classic triad: barky cough, hoarseness, stridor; URI prodrome; low-grade fever</td>
+            <td><strong>Croup (LTB)</strong></td>
+            <td>Dexamethasone 0.6 mg/kg (single dose). Racemic epinephrine if stridor at rest.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MCQ ==================== -->
+<div id="mcq" class="section">
+  <div class="section-header">
+    <h2>MCQ Drill — 25 Questions</h2>
+    <p>Click an answer to check. Read the explanation!</p>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-num" id="score-display">0 / 25</div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <span style="font-size:0.85rem; color:var(--text-sub);">Questions answered</span>
+    <button onclick="resetMCQ()" style="background:var(--accent); color:white; border:none; padding:6px 14px; border-radius:6px; cursor:pointer; font-size:0.82rem;">Reset</button>
+  </div>
+
+  <!-- MCQs -->
+  <div class="mcq-card" id="q1">
+    <div class="mcq-num">Q1</div>
+    <div class="mcq-q">A 4-month-old infant is diagnosed with SOME Dehydration. What is the correct daily zinc dosage?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q1')">A. 20 mg (1 tablet) daily × 14 days</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q1')">B. 10 mg (½ tablet) daily × 14 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q1')">C. 20 mg daily × 10 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q1')">D. 10 mg daily × 7 days</li>
+    </ul>
+    <div class="mcq-explain" id="q1-exp">Age 2–6 months → ½ tablet (10 mg) × 14 days. Children ≥6 months get 1 tablet (20 mg) × 14 days.</div>
+  </div>
+
+  <div class="mcq-card" id="q2">
+    <div class="mcq-num">Q2</div>
+    <div class="mcq-q">A child has SEVERE DEHYDRATION with no other severe classification. What is the most appropriate next step?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q2')">A. Plan B (ORS in clinic × 4 hours)</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q2')">B. Refer urgently + ORS sips on the way</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q2')">C. Plan C — IV fluids (Ringer's Lactate 100 mL/kg)</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q2')">D. Ciprofloxacin for 3 days</li>
+    </ul>
+    <div class="mcq-explain" id="q2-exp">Plan C = IV fluids for SEVERE DEHYDRATION with NO other severe classification. If there IS another severe classification → refer urgently with ORS sips on the way.</div>
+  </div>
+
+  <div class="mcq-card" id="q3">
+    <div class="mcq-num">Q3</div>
+    <div class="mcq-q">In Plan C for a 6-month-old infant, what is the IV fluid schedule?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q3')">A. 30 mL/kg in 30 minutes, then 70 mL/kg in 2.5 hours</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q3')">B. 30 mL/kg in 1 hour, then 70 mL/kg in 5 hours</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q3')">C. 50 mL/kg in 1 hour, then 50 mL/kg in 5 hours</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q3')">D. 100 mL/kg in 6 hours</li>
+    </ul>
+    <div class="mcq-explain" id="q3-exp">INFANTS (&lt;12 months): 30 mL/kg in 1 hour → 70 mL/kg in 5 hours. CHILDREN (1–5 yrs): 30 mL/kg in 30 minutes → 70 mL/kg in 2.5 hours. Total = 100 mL/kg (Ringer's Lactate).</div>
+  </div>
+
+  <div class="mcq-card" id="q4">
+    <div class="mcq-num">Q4</div>
+    <div class="mcq-q">A 10-kg child with SOME dehydration needs Plan B ORS. How much ORS should be given in 4 hours?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q4')">A. 250 mL</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q4')">B. 500 mL</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q4')">C. 750 mL</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q4')">D. 1000 mL</li>
+    </ul>
+    <div class="mcq-explain" id="q4-exp">Formula: ORS (mL) = weight (kg) × 75. So 10 kg × 75 = 750 mL over 4 hours. ⭐</div>
+  </div>
+
+  <div class="mcq-card" id="q5">
+    <div class="mcq-num">Q5</div>
+    <div class="mcq-q">A child has blood in the stool with diarrhea. Which is the correct treatment?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q5')">A. Amoxicillin × 7 days, follow-up 5 days</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q5')">B. Ciprofloxacin × 3 days, follow-up 3 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q5')">C. Zinc × 14 days, follow-up 5 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q5')">D. Plan B ORS × 4 hours, follow-up 3 days</li>
+    </ul>
+    <div class="mcq-explain" id="q5-exp">Dysentery (blood in stool) = Ciprofloxacin × 3 days. Follow-up in 3 days (NOT 5). Common organisms: Shigella and Amoeba.</div>
+  </div>
+
+  <div class="mcq-card" id="q6">
+    <div class="mcq-num">Q6</div>
+    <div class="mcq-q">Which of the following is NOT one of the "4 Rules of Home Treatment" in Plan A?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q6')">A. Give extra fluid</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q6')">B. Give Zinc supplements</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q6')">C. Give Ciprofloxacin</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q6')">D. Continue feeding</li>
+    </ul>
+    <div class="mcq-explain" id="q6-exp">The 4 Rules of Plan A: (1) Give extra fluid, (2) Give Zinc supplements (2 months–5 years), (3) Continue feeding, (4) When to return. Ciprofloxacin is used for Dysentery, not standard home management.</div>
+  </div>
+
+  <div class="mcq-card" id="q7">
+    <div class="mcq-num">Q7</div>
+    <div class="mcq-q">What is the reduced osmolarity ORS composition (Na/Glucose/Osmolarity)?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q7')">A. Na 90 / Glucose 111 / Osmolarity 311</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q7')">B. Na 75 / Glucose 111 / Osmolarity 268</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q7')">C. Na 75 / Glucose 75 / Osmolarity 245</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q7')">D. Na 50 / Glucose 60 / Osmolarity 210</li>
+    </ul>
+    <div class="mcq-explain" id="q7-exp">Reduced Osmolarity ORS: Na 75 mEq/L, Glucose 75 mmol/L, Osmolarity 245 mOsm/L. Standard ORS: Na 90, Glucose 111, Osmolarity 311.</div>
+  </div>
+
+  <div class="mcq-card" id="q8">
+    <div class="mcq-num">Q8</div>
+    <div class="mcq-q">Which diarrhea mechanism is characterized by stool that persists even during fasting?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q8')">A. Osmotic diarrhea</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q8')">B. Secretory diarrhea</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q8')">C. Hypermotility</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q8')">D. Mucosal invasion</li>
+    </ul>
+    <div class="mcq-explain" id="q8-exp">Secretory diarrhea PERSISTS during fasting (normal osmolality). Osmotic diarrhea STOPS with fasting. Prototype for secretory = cholera.</div>
+  </div>
+
+  <div class="mcq-card" id="q9">
+    <div class="mcq-num">Q9</div>
+    <div class="mcq-q">A 3-year-old presents with sudden high fever, drooling, muffled voice, and tripod position. What should you do FIRST?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q9')">A. Have the child lie supine for examination</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q9')">B. Start oral antibiotics immediately</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q9')">C. Secure the airway — do NOT make child lie down</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q9')">D. Give dexamethasone 0.6 mg/kg IM</li>
+    </ul>
+    <div class="mcq-explain" id="q9-exp">This is EPIGLOTTITIS — a medical emergency. ALWAYS secure the airway first. Do NOT ask child to lie down (can cause immediate respiratory arrest from anterior neck structures pressing on narrowed glottis). Treatment: Ceftriaxone IV × 10 days.</div>
+  </div>
+
+  <div class="mcq-card" id="q10">
+    <div class="mcq-num">Q10</div>
+    <div class="mcq-q">A 3-year-old has a barky cough, hoarseness, inspiratory stridor, and low-grade fever following a 3-day cold. What is the radiographic finding?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q10')">A. Thumbprint sign</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q10')">B. Lobar consolidation</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q10')">C. Steeple sign (subglottic narrowing)</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q10')">D. Hyperinflation with bilateral infiltrates</li>
+    </ul>
+    <div class="mcq-explain" id="q10-exp">Croup (LTB) = STEEPLE sign (subglottic narrowing on AP neck X-ray). Epiglottitis = THUMBPRINT sign. Bacterial pneumonia = Lobar consolidation. Viral pneumonia = hyperinflation + interstitial infiltrates.</div>
+  </div>
+
+  <div class="mcq-card" id="q11">
+    <div class="mcq-num">Q11</div>
+    <div class="mcq-q">Which vomiting pathway is responsible for cisplatin-induced nausea and vomiting?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q11')">A. Mechanical pathway</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q11')">B. Bloodborne toxin pathway</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q11')">C. Motion pathway</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q11')">D. Emotional pathway</li>
+    </ul>
+    <div class="mcq-explain" id="q11-exp">Cisplatin (chemotherapy) → circulating toxins → stimulate chemoreceptor trigger zone in area postrema → bloodborne toxin pathway. CTZ receptors: D₂, D₃, 5-HT₃, NK₁.</div>
+  </div>
+
+  <div class="mcq-card" id="q12">
+    <div class="mcq-num">Q12</div>
+    <div class="mcq-q">A 1-year-old with bronchiolitis is admitted. Which treatment is routinely given?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q12')">A. Oral steroids</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q12')">B. Nebulized racemic epinephrine</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q12')">C. Azithromycin</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q12')">D. Supportive care (hydration + oxygenation assessment)</li>
+    </ul>
+    <div class="mcq-explain" id="q12-exp">For bronchiolitis, NOT routinely given: bronchodilators, steroids, antibiotics, nebulizers (NSS), antivirals. Treatment = SUPPORTIVE only: hydration, oxygenation, monitoring.</div>
+  </div>
+
+  <div class="mcq-card" id="q13">
+    <div class="mcq-num">Q13</div>
+    <div class="mcq-q">An 8-year-old presents with fever, tonsillar erythema, tender anterior cervical lymphadenopathy, and absence of cough. What is the first-line antibiotic?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q13')">A. Azithromycin × 5 days</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q13')">B. Amoxicillin × 10 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q13')">C. Ceftriaxone IV × 10 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q13')">D. Ciprofloxacin × 3 days</li>
+    </ul>
+    <div class="mcq-explain" id="q13-exp">GAS pharyngitis (fever + tonsillar exudate + tender anterior cervical nodes + NO cough) → Amoxicillin × 10 days (preferred in children for taste + once-daily dosing). Goal: prevent acute rheumatic fever if started ≤10 days.</div>
+  </div>
+
+  <div class="mcq-card" id="q14">
+    <div class="mcq-num">Q14</div>
+    <div class="mcq-q">What is the most common organism causing bronchiolitis?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q14')">A. Mycoplasma pneumoniae</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q14')">B. Adenovirus</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q14')">C. Respiratory Syncytial Virus (RSV)</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q14')">D. Parainfluenza virus</li>
+    </ul>
+    <div class="mcq-explain" id="q14-exp">RSV causes >90% of bronchiolitis cases. RSV vaccine is approved in USA but not yet rolled out in the Philippines. RSV is also the most common cause of viral pneumonia in infants.</div>
+  </div>
+
+  <div class="mcq-card" id="q15">
+    <div class="mcq-num">Q15</div>
+    <div class="mcq-q">In the IMCI color-coded triage system, what does YELLOW signify?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q15')">A. Urgent hospital referral or admission</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q15')">B. Most benign condition requiring home care only</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q15')">C. Initiation of specific outpatient treatment</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q15')">D. No further management needed</li>
+    </ul>
+    <div class="mcq-explain" id="q15-exp">PINK = urgent referral. YELLOW = specific outpatient treatment (some danger signs). GREEN = supportive home care (benign).</div>
+  </div>
+
+  <div class="mcq-card" id="q16">
+    <div class="mcq-num">Q16</div>
+    <div class="mcq-q">Which of the following is the most infectious stage of pertussis?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, true, 'q16')">A. Catarrhal stage</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q16')">B. Paroxysmal stage</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q16')">C. Convalescent stage</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q16')">D. All stages are equally infectious</li>
+    </ul>
+    <div class="mcq-explain" id="q16-exp">Catarrhal stage = MOST infectious phase (resembles common cold). Transmission can occur throughout the catarrhal phase and for 3 weeks after onset of paroxysmal phase. Antibiotics in paroxysmal phase = NOT effective.</div>
+  </div>
+
+  <div class="mcq-card" id="q17">
+    <div class="mcq-num">Q17</div>
+    <div class="mcq-q">A 10-year-old with a 2-week cough (no fever, minimal findings) is diagnosed with atypical pneumonia. Epidemics of this disease occur every:</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q17')">A. 1–2 years</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q17')">B. 2–4 years</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q17')">C. 3–7 years</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q17')">D. 10–15 years</li>
+    </ul>
+    <div class="mcq-explain" id="q17-exp">Atypical pneumonia (Mycoplasma/Chlamydia) epidemics occur every 3–7 years. It's common in school-aged children (5–15 yrs) and causes up to 1/3 of CAP in this age group.</div>
+  </div>
+
+  <div class="mcq-card" id="q18">
+    <div class="mcq-num">Q18</div>
+    <div class="mcq-q">In Plan B (ORS for Some Dehydration), which statement is TRUE?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q18')">A. Give ORS over 2 hours</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q18')">B. Food should be given freely throughout the rehydration period</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q18')">C. Breastfeeding must be stopped during Plan B</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q18')">D. Food (except breastmilk) should not be given during the 4-hour rehydration period</li>
+    </ul>
+    <div class="mcq-explain" id="q18-exp">During Plan B (4-hour ORS rehydration): Food (EXCEPT breastmilk) should NOT be given. Breastfeeding is ALWAYS continued. If Plan B continues >4 hours, then give food every 3–4 hours.</div>
+  </div>
+
+  <div class="mcq-card" id="q19">
+    <div class="mcq-num">Q19</div>
+    <div class="mcq-q">A 16-year-old presents with severe sore throat, difficulty opening her mouth, drooling, and "hot potato voice." The uvula is displaced to the right. Most likely diagnosis?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q19')">A. Retropharyngeal abscess</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q19')">B. Peritonsillar abscess</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q19')">C. Epiglottitis</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q19')">D. Croup</li>
+    </ul>
+    <div class="mcq-explain" id="q19-exp">Peritonsillar abscess: asymmetric tonsillar bulge + uvula deviation + hot potato voice + trismus. More common in OLDER children/adolescents. GAS + oropharyngeal anaerobes. Retropharyngeal abscess = bulge BEHIND uvula + neck stiffness + younger children (&lt;6 yrs).</div>
+  </div>
+
+  <div class="mcq-card" id="q20">
+    <div class="mcq-num">Q20</div>
+    <div class="mcq-q">Which diarrhea pathogen is associated with BLOODY stools and WBCs in stool?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q20')">A. Rotavirus</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q20')">B. Vibrio cholerae</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q20')">C. Shigella</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q20')">D. Cryptosporidium</li>
+    </ul>
+    <div class="mcq-explain" id="q20-exp">Mucosal invasion mechanism → bloody stools + WBCs in stool. Pathogens: Salmonella, Shigella (dysentery), Amebiasis, Yersinia, Campylobacter. Cholera/Rotavirus = secretory/osmotic = watery, non-bloody.</div>
+  </div>
+
+  <div class="mcq-card" id="q21">
+    <div class="mcq-num">Q21</div>
+    <div class="mcq-q">Which of the following statements about viral pneumonia vs. bacterial pneumonia is CORRECT?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q21')">A. Viral pneumonia commonly presents with lobar consolidation</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q21')">B. Pleural effusion is more common in viral pneumonia</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q21')">C. Viral pneumonia WBC is usually &lt;20,000/mm³ with lymphocyte predominance</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q21')">D. Wheezing is more common in viral pneumonia</li>
+    </ul>
+    <div class="mcq-explain" id="q21-exp">Viral pneumonia: WBC normal or mildly elevated (&lt;20,000), lymphocyte-predominant. X-ray: hyperinflation, bilateral interstitial infiltrates, peribronchial cuffing. Wheeze and pleural effusion are more common in BACTERIAL pneumonia.</div>
+  </div>
+
+  <div class="mcq-card" id="q22">
+    <div class="mcq-num">Q22</div>
+    <div class="mcq-q">In the IMCI algorithm, diarrhea lasting ≥14 days WITH dehydration present is classified as?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q22')">A. Persistent Diarrhea</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q22')">B. Severe Persistent Diarrhea</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q22')">C. Dysentery</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q22')">D. Severe Dehydration</li>
+    </ul>
+    <div class="mcq-explain" id="q22-exp">Persistent Diarrhea (≥14 days): WITH dehydration = Severe Persistent Diarrhea → treat dehydration (Plan C) → refer to hospital. WITHOUT dehydration = Persistent Diarrhea → multivitamins/minerals/zinc × 14 days + Vitamin A + follow-up 5 days.</div>
+  </div>
+
+  <div class="mcq-card" id="q23">
+    <div class="mcq-num">Q23</div>
+    <div class="mcq-q">For a child under 2 years old with Plan A, how much extra ORS should be given after each loose stool?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q23')">A. 25–50 mL</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q23')">B. 50–100 mL</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q23')">C. 100–200 mL</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q23')">D. 200–400 mL</li>
+    </ul>
+    <div class="mcq-explain" id="q23-exp">Plan A additional fluid: ≤2 years = 50–100 mL after each loose stool. ≥2 years = 100–200 mL after each loose stool.</div>
+  </div>
+
+  <div class="mcq-card" id="q24">
+    <div class="mcq-num">Q24</div>
+    <div class="mcq-q">A 12-year-old with known allergic rhinitis and asthma develops fever 39°C, headache, purulent nasal discharge, and facial tenderness 10 days after a cold. The CORRECT antibiotic treatment is?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, true, 'q24')">A. Amoxicillin 45 mg/kg/day BID × 10 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q24')">B. Ciprofloxacin × 5 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q24')">C. Azithromycin × 3 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q24')">D. No antibiotics — supportive care only</li>
+    </ul>
+    <div class="mcq-explain" id="q24-exp">Acute bacterial sinusitis (recurrent fever + purulent discharge &gt;10 days + facial pain) → Amoxicillin 45 mg/kg/day BID/TID × 10 days (or 7 days after symptom resolution) is the antibiotic of choice.</div>
+  </div>
+
+  <div class="mcq-card" id="q25">
+    <div class="mcq-num">Q25</div>
+    <div class="mcq-q">What is the recommended initial treatment for MODERATE croup?</div>
+    <ul class="mcq-choices">
+      <li class="mcq-choice" onclick="answer(this, false, 'q25')">A. Ceftriaxone IV × 10 days</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q25')">B. Supportive care only; most cases self-limited</li>
+      <li class="mcq-choice" onclick="answer(this, true, 'q25')">C. Dexamethasone 0.6 mg/kg + nebulized racemic epinephrine if stridor at rest</li>
+      <li class="mcq-choice" onclick="answer(this, false, 'q25')">D. Amoxicillin × 7 days</li>
+    </ul>
+    <div class="mcq-explain" id="q25-exp">Moderate/Severe croup: Dexamethasone 0.6 mg/kg (single dose oral/IM) = MAINSTAY. Add nebulized racemic epinephrine if stridor at rest persists. Dexamethasone reduces severity, duration, and need for hospitalization/intubation. Croup is viral → no antibiotics.</div>
+  </div>
+
+</div>
+
+<!-- ==================== BUZZWORDS ==================== -->
+<div id="buzz" class="section">
+  <div class="section-header">
+    <h2>⚡ Buzzwords & Quick Summary</h2>
+    <p>See a word → know the diagnosis | High-yield for MCQs</p>
+  </div>
+
+  <div class="subhead">Disease → Classic Buzzword</div>
+  <div class="buzz-grid">
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Thumbprint sign</div>
+      <div class="buzz-def">Epiglottitis — lateral neck X-ray showing thickened, swollen epiglottis</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Steeple sign</div>
+      <div class="buzz-def">Croup (LTB) — subglottic narrowing on AP soft tissue neck X-ray</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Hot potato voice</div>
+      <div class="buzz-def">Peritonsillar abscess — muffled/garbled voice from obstructive oropharyngeal infection</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Tripod position</div>
+      <div class="buzz-def">Epiglottitis (or severe croup) — child leans forward, arms braced, neck hyperextended to maximize airway</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Staccato / Paroxysmal cough + "whoop"</div>
+      <div class="buzz-def">Pertussis — paroxysmal stage. Bordetella pertussis. Erythromycin 1st choice.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Seal-like / Barky cough</div>
+      <div class="buzz-def">Croup — laryngotracheobronchitis. Parainfluenza type 1. Subglottic.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Asymmetric tonsillar bulge + uvula deviation</div>
+      <div class="buzz-def">Peritonsillar abscess — DIAGNOSTIC finding. GAS + anaerobes. Older children.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Posterior pharyngeal wall bulging + stiff neck</div>
+      <div class="buzz-def">Retropharyngeal abscess — younger children (&lt;6 yrs). Polymicrobial.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Blood in stool + crampy pain</div>
+      <div class="buzz-def">Dysentery — Shigella/Amoeba. Ciprofloxacin × 3 days. Follow-up 3 days.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Diarrhea stops with fasting</div>
+      <div class="buzz-def">Osmotic diarrhea — lactase deficiency, maldigestion. ↑ Osmolality.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Diarrhea persists during fasting</div>
+      <div class="buzz-def">Secretory diarrhea — cholera, toxins. Normal osmolality.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Skin pinch &gt;2 seconds</div>
+      <div class="buzz-def">SEVERE DEHYDRATION — Plan C (IV Ringer's Lactate 100 mL/kg)</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Skin pinch ≤2 seconds (slow)</div>
+      <div class="buzz-def">SOME DEHYDRATION — Plan B (ORS × 4 hrs, 75 mL/kg)</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Skin pinch fast + active + drinking well</div>
+      <div class="buzz-def">NO DEHYDRATION — Plan A (home therapy, zinc, extra fluids)</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Persistently dry cough, school-age, minimal findings</div>
+      <div class="buzz-def">Atypical Pneumonia — Mycoplasma. Azithromycin. Epidemics q3–7 yrs.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Wheezing so loud audible without stethoscope</div>
+      <div class="buzz-def">Bronchiolitis — RSV most common. &lt;2 years. Supportive only.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Lobar consolidation + dullness to percussion</div>
+      <div class="buzz-def">Bacterial Pneumonia — S. pneumoniae most common. Amoxicillin (outpt).</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Episodic vomiting, stereotypical, asymptomatic intervals</div>
+      <div class="buzz-def">Cyclic Vomiting Syndrome — sudden onset, repetitive, normal between episodes</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Area postrema / CTZ</div>
+      <div class="buzz-def">Vomiting center of the brain — also contains dorsal motor vagal nucleus + NTS</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Leukemoid reaction in infant with cough</div>
+      <div class="buzz-def">Pertussis — very high WBC suggests severe infection. Most dangerous to infants.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 4 D's</div>
+      <div class="buzz-def">Epiglottitis: Dysphagia, Dysphonia, Drooling, Distress</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Strawberry tongue + tonsillar exudate + NO cough</div>
+      <div class="buzz-def">GAS Pharyngitis — Amoxicillin × 10 days. Prevent ARF. No effect on APSGN.</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Greenish phlegm in infant</div>
+      <div class="buzz-def">Does NOT always = bacterial infection! Infants breathe through nose → mucus dries → turns green temporarily</div>
+    </div>
+    <div class="buzz-item">
+      <div class="buzz-term">🎯 Sinus development order</div>
+      <div class="buzz-def">E-M-S-F: Ethmoid (birth) → Maxillary (birth, pneumatized 4 yrs) → Sphenoidal (5 yrs) → Frontal (7–8 yrs)</div>
+    </div>
+  </div>
+
+  <div class="subhead" style="margin-top:28px;">Critical Numbers to Remember ⭐⭐⭐</div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Topic</th><th>Number</th><th>Context</th></tr></thead>
+        <tbody>
+          <tr><td>ORS for Plan B</td><td class="teal">75 mL/kg</td><td>Over 4 hours; Formula: weight × 75</td></tr>
+          <tr><td>IV fluid Plan C</td><td class="teal">100 mL/kg total</td><td>Ringer's Lactate (30+70 split)</td></tr>
+          <tr><td>Infants Plan C — first phase</td><td class="teal">30 mL/kg in 1 hour</td><td>Then 70 mL/kg in 5 hours</td></tr>
+          <tr><td>Children Plan C — first phase</td><td class="teal">30 mL/kg in 30 minutes</td><td>Then 70 mL/kg in 2.5 hours</td></tr>
+          <tr><td>Zinc: 2–6 months</td><td class="teal">10 mg/day × 14 days</td><td>½ tablet</td></tr>
+          <tr><td>Zinc: ≥6 months</td><td class="teal">20 mg/day × 14 days</td><td>1 tablet</td></tr>
+          <tr><td>ORS after stool: &lt;2 yrs</td><td class="teal">50–100 mL</td><td>Plan A home therapy</td></tr>
+          <tr><td>ORS after stool: ≥2 yrs</td><td class="teal">100–200 mL</td><td>Plan A home therapy</td></tr>
+          <tr><td>Dysentery follow-up</td><td class="red">3 days</td><td>Not 5 days!</td></tr>
+          <tr><td>Persistent diarrhea cutoff</td><td class="red">≥14 days</td><td>Acute = &lt;14 days</td></tr>
+          <tr><td>Persistent diarrhea follow-up</td><td class="teal">5 days</td><td>Same as no/some dehydration</td></tr>
+          <tr><td>NGT hydration for Plan C</td><td class="teal">20 mL/kg/hr × 6 hrs</td><td>Total = 120 mL/kg</td></tr>
+          <tr><td>Reduced ORS Osmolarity</td><td class="teal">245 mOsm/L</td><td>Na 75, Glucose 75</td></tr>
+          <tr><td>Standard ORS Osmolarity</td><td class="teal">311 mOsm/L</td><td>Na 90, Glucose 111</td></tr>
+          <tr><td>HYPOnatremia</td><td class="red">&lt;130 mmol/L</td><td></td></tr>
+          <tr><td>HYPERnatremia</td><td class="red">&gt;150 mmol/L</td><td></td></tr>
+          <tr><td>HypoKALEMIA</td><td class="red">&lt;3 mmol/L</td><td></td></tr>
+          <tr><td>Dexamethasone for croup</td><td class="teal">0.6 mg/kg</td><td>Single dose oral or IM; max 16 mg</td></tr>
+          <tr><td>GAS pharyngitis treatment duration</td><td class="teal">10 days</td><td>Penicillin or Amoxicillin</td></tr>
+          <tr><td>Ciprofloxacin for dysentery</td><td class="teal">3 days</td><td></td></tr>
+          <tr><td>Normal URI per year (0–2 yrs)</td><td class="teal">2–8</td><td>Adults = fewer</td></tr>
+          <tr><td>Abnormal pneumonia threshold</td><td class="red">&gt;2 per year or &gt;3 total</td><td>Investigate further</td></tr>
+          <tr><td>Atypical pneumonia epidemics</td><td class="teal">Every 3–7 years</td><td>Mycoplasma</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="subhead" style="margin-top:20px;">Drug of Choice Summary</div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Condition</th><th>Drug of Choice</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr><td>Dysentery (IMCI)</td><td><em>Ciprofloxacin</em></td><td>3 days</td></tr>
+          <tr><td>GAS Pharyngitis</td><td><em>Penicillin V / Amoxicillin</em></td><td>10 days</td></tr>
+          <tr><td>Pertussis</td><td><em>Erythromycin</em> (1st), Azithromycin, Clarithromycin</td><td>Until carriage reduced</td></tr>
+          <tr><td>Atypical Pneumonia</td><td><em>Azithromycin</em> (preferred for Mycoplasma)</td><td>5 days (Azithromycin)</td></tr>
+          <tr><td>Bacterial Sinusitis</td><td><em>Amoxicillin 45 mg/kg/d</em></td><td>10 days or 7 days after resolution</td></tr>
+          <tr><td>Epiglottitis</td><td><em>Ceftriaxone / Cefepime / Meropenem IV</em></td><td>10 days</td></tr>
+          <tr><td>Peritonsillar Abscess</td><td>Amoxiclav or Clindamycin (oral); Ampicillin-sulbactam (IV)</td><td>Variable</td></tr>
+          <tr><td>Croup — Steroids</td><td><em>Dexamethasone 0.6 mg/kg</em></td><td>Single dose</td></tr>
+          <tr><td>Croup — Acute stridor</td><td><em>Nebulized Racemic Epinephrine</em></td><td>PRN</td></tr>
+          <tr><td>Bacterial Outpatient CAP</td><td><em>High-dose Amoxicillin 90 mg/kg/day</em></td><td>5–7 days (uncomplicated)</td></tr>
+          <tr><td>Inpatient CAP (mild)</td><td><em>IV Ampicillin / Penicillin G</em></td><td>Until afebrile 72 hrs</td></tr>
+          <tr><td>Inpatient CAP (mod-severe)</td><td><em>IV Ceftriaxone / Cefotaxime</em></td><td>Until afebrile 72 hrs</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- end container -->
+
+<button class="back-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
+<script>
+  let answeredCount = 0;
+  let answeredQuestions = new Set();
+
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const btns = document.querySelectorAll('.nav-btn');
+    const ids = ['imci','diarrhea','vomiting','ors','urti','lrti','cases','mcq','buzz'];
+    const idx = ids.indexOf(id);
+    if(idx >= 0) btns[idx].classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function answer(el, isCorrect, qId) {
+    if(el.classList.contains('correct') || el.classList.contains('wrong')) return;
+    const card = document.getElementById(qId);
+    if(card.querySelector('.correct') || card.querySelector('.wrong')) {
+      // already answered, just show
+      return;
+    }
+    const choices = card.querySelectorAll('.mcq-choice');
+    choices.forEach(c => {
+      c.style.pointerEvents = 'none';
+    });
+    if(isCorrect) {
+      el.classList.add('correct');
+      el.innerHTML = '✅ ' + el.innerHTML;
+    } else {
+      el.classList.add('wrong');
+      el.innerHTML = '❌ ' + el.innerHTML;
+      // find and highlight correct
+      choices.forEach(c => {
+        if(c.getAttribute('onclick').includes('true')) {
+          c.classList.add('correct');
+          c.innerHTML = '✅ ' + c.innerHTML;
+        }
+      });
+    }
+    const exp = document.getElementById(qId + '-exp');
+    if(exp) exp.classList.add('show');
+
+    if(!answeredQuestions.has(qId)) {
+      answeredQuestions.add(qId);
+      answeredCount++;
+      document.getElementById('score-display').textContent = answeredCount + ' / 25';
+      const pct = (answeredCount / 25) * 100;
+      document.getElementById('progress-fill').style.width = pct + '%';
+    }
+  }
+
+  function resetMCQ() {
+    answeredCount = 0;
+    answeredQuestions.clear();
+    document.getElementById('score-display').textContent = '0 / 25';
+    document.getElementById('progress-fill').style.width = '0%';
+    document.querySelectorAll('.mcq-choice').forEach(c => {
+      c.classList.remove('correct', 'wrong');
+      c.style.pointerEvents = '';
+      // Clean up emoji prefixes
+      c.innerHTML = c.innerHTML.replace(/^[✅❌] /, '');
+    });
+    document.querySelectorAll('.mcq-explain').forEach(e => e.classList.remove('show'));
+  }
+</script>
+</body>
+</html>

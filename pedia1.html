@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pediatrics 1 — High-Yield Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f3ee;
+    --surface: #ffffff;
+    --surface2: #faf9f6;
+    --border: #e2ddd6;
+    --accent: #2d6a4f;
+    --accent2: #52b788;
+    --accent3: #e76f51;
+    --accent4: #457b9d;
+    --accent5: #9b2226;
+    --accent6: #7b2d8b;
+    --text: #1a1a1a;
+    --text2: #555;
+    --text3: #888;
+    --warn: #d62828;
+    --warn-bg: #fff5f5;
+    --gold: #c9a84c;
+    --gold-bg: #fffbf0;
+    --blue-bg: #f0f6ff;
+    --green-bg: #f0faf4;
+    --purple-bg: #f8f0ff;
+    --tag-red: #fdecea;
+    --tag-green: #e8f5e9;
+    --tag-blue: #e3f2fd;
+    --tag-orange: #fff3e0;
+    --tag-purple: #f3e5f5;
+    --tag-teal: #e0f7fa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+  /* HEADER */
+  header {
+    background: var(--accent);
+    color: white;
+    padding: 28px 40px 20px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+  }
+  header h1 span { color: var(--accent2); }
+  /* NAV TABS */
+  nav { display: flex; gap: 6px; flex-wrap: wrap; }
+  nav button {
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 7px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  nav button:hover { background: rgba(255,255,255,0.2); color: white; }
+  nav button.active {
+    background: white;
+    color: var(--accent);
+    font-weight: 600;
+    border-color: white;
+  }
+  /* MAIN */
+  main { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; }
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* TYPOGRAPHY */
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent2);
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 22px 0 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  h3::before { content: ''; width: 4px; height: 18px; background: var(--accent2); border-radius: 2px; flex-shrink: 0; }
+  h4 { font-size: 0.85rem; font-weight: 600; color: var(--accent4); margin: 12px 0 6px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  .card-grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media(max-width: 700px) { .card-grid, .card-grid3 { grid-template-columns: 1fr; } }
+
+  /* TABLES */
+  .tbl-wrap { overflow-x: auto; margin-bottom: 16px; border-radius: 10px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--accent);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--surface2); }
+  tr:hover td { background: #edf7f2; }
+
+  /* ALERT BOXES */
+  .alert {
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    display: flex; gap: 10px;
+    font-size: 13px;
+  }
+  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .alert-red { background: var(--warn-bg); border-left: 4px solid var(--warn); }
+  .alert-gold { background: var(--gold-bg); border-left: 4px solid var(--gold); }
+  .alert-green { background: var(--green-bg); border-left: 4px solid var(--accent2); }
+  .alert-blue { background: var(--blue-bg); border-left: 4px solid var(--accent4); }
+  .alert-purple { background: var(--purple-bg); border-left: 4px solid var(--accent6); }
+  .alert strong { display: block; margin-bottom: 3px; }
+
+  /* TAGS / BADGES */
+  .tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin: 1px 2px;
+  }
+  .tag-red { background: var(--tag-red); color: #c62828; }
+  .tag-green { background: var(--tag-green); color: #2e7d32; }
+  .tag-blue { background: var(--tag-blue); color: #1565c0; }
+  .tag-orange { background: var(--tag-orange); color: #e65100; }
+  .tag-purple { background: var(--tag-purple); color: #6a1b9a; }
+  .tag-teal { background: var(--tag-teal); color: #00695c; }
+
+  /* HIGHLIGHT */
+  .hl { background: #fff9c4; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+  .hl-red { background: #fdecea; padding: 0 3px; border-radius: 3px; font-weight: 600; color: #c62828; }
+  .hl-green { background: #e8f5e9; padding: 0 3px; border-radius: 3px; font-weight: 600; color: #2e7d32; }
+  .hl-blue { background: #e3f2fd; padding: 0 3px; border-radius: 3px; font-weight: 600; color: #1565c0; }
+
+  /* ALGORITHM BOX */
+  .algo {
+    background: linear-gradient(135deg, #f8fff9, #f0faf4);
+    border: 1.5px solid var(--accent2);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+  .algo-step {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-bottom: 10px;
+  }
+  .algo-num {
+    background: var(--accent);
+    color: white;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .algo-arrow {
+    text-align: center; color: var(--accent2); font-size: 18px;
+    margin: -4px 0 -4px 6px;
+  }
+
+  /* MILESTONE TIMELINE */
+  .timeline { position: relative; padding-left: 28px; margin-bottom: 16px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 2px; background: var(--accent2);
+    border-radius: 2px;
+  }
+  .tl-item {
+    position: relative; margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -22px; top: 5px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent2);
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--accent2);
+  }
+  .tl-age { font-weight: 700; color: var(--accent); }
+
+  /* MCQ */
+  .mcq-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .mcq-q {
+    padding: 16px 18px;
+    font-weight: 500;
+    font-size: 13.5px;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+    transition: background 0.15s;
+  }
+  .mcq-q:hover { background: var(--surface2); }
+  .mcq-q .qnum { color: var(--accent2); font-weight: 700; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .mcq-toggle { color: var(--accent2); font-size: 18px; flex-shrink: 0; transition: transform 0.2s; }
+  .mcq-card.open .mcq-toggle { transform: rotate(180deg); }
+  .mcq-opts { padding: 0 18px 4px; }
+  .mcq-opt {
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.15s;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .mcq-opt:hover { border-color: var(--accent2); background: var(--green-bg); }
+  .mcq-opt.correct { background: var(--green-bg); border-color: var(--accent2); color: #2e7d32; font-weight: 600; }
+  .mcq-opt.wrong { background: var(--warn-bg); border-color: var(--warn); color: var(--warn); }
+  .mcq-opt .opt-letter { font-weight: 700; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; }
+  .mcq-ans {
+    display: none;
+    padding: 14px 18px;
+    background: var(--green-bg);
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .mcq-card.open .mcq-ans { display: block; }
+  .mcq-ans strong { color: var(--accent); }
+
+  /* BUZZWORD BOX */
+  .buzz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .buzz-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    border-left: 4px solid var(--accent2);
+  }
+  .buzz-item .buzz-term { font-weight: 700; color: var(--accent); font-size: 13px; margin-bottom: 4px; }
+  .buzz-item .buzz-def { font-size: 12px; color: var(--text2); }
+
+  /* SECTION LABEL */
+  .sec-label {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent); color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  @media(max-width: 650px) { .two-col { grid-template-columns: 1fr; } }
+
+  ul, ol { padding-left: 18px; }
+  li { margin-bottom: 4px; font-size: 13px; }
+  p { font-size: 13px; margin-bottom: 10px; }
+
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+  .emoji { font-size: 16px; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 3px; }
+
+  /* Progress bar cosmetic */
+  .progress-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .flag-red { color: var(--warn); font-weight: 700; }
+  .star { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Pediatrics 1 &mdash; <span>High-Yield Reviewer</span></h1>
+  <nav>
+    <button class="active" onclick="showSection('newborn')">🍼 Newborn</button>
+    <button onclick="showSection('growth')">📏 Growth & Dev</button>
+    <button onclick="showSection('preventive')">🛡️ Preventive Pedia</button>
+    <button onclick="showSection('immuno')">💉 Immunization</button>
+    <button onclick="showSection('redflags')">🚩 Red Flags</button>
+    <button onclick="showSection('mcq')">📝 MCQ Practice</button>
+    <button onclick="showSection('buzzwords')">⚡ Buzzwords</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============================= NEWBORN ============================= -->
+<div id="newborn" class="section active">
+  <div class="progress-bar"></div>
+  <h2>🍼 Normal Physiologic Changes in the Newborn</h2>
+
+  <div class="alert alert-gold">
+    <span class="alert-icon">⭐</span>
+    <div><strong>High-Yield Summary</strong> The neonatal period is the period of FASTEST postnatal growth. Weight drops 10–12% in week 1, then exceeds birth weight by week 2. Quiet Alert state = best time to interact. Crying peaks at 6 weeks.</div>
+  </div>
+
+  <h3>Average Term Newborn Measurements</h3>
+  <div class="card-grid3">
+    <div class="card" style="text-align:center; border-top: 3px solid var(--accent);">
+      <div style="font-size:2rem; margin-bottom:6px;">⚖️</div>
+      <div style="font-size:1.4rem; font-weight:700; color:var(--accent);">3.4 kg</div>
+      <div style="font-size:0.85rem; color:var(--text2);">Weight (7.5 lbs)<br><span class="hl-green">~2.5 kg for Filipinos</span></div>
+    </div>
+    <div class="card" style="text-align:center; border-top: 3px solid var(--accent4);">
+      <div style="font-size:2rem; margin-bottom:6px;">📏</div>
+      <div style="font-size:1.4rem; font-weight:700; color:var(--accent4);">50 cm</div>
+      <div style="font-size:0.85rem; color:var(--text2);">Length (20 inches)</div>
+    </div>
+    <div class="card" style="text-align:center; border-top: 3px solid var(--accent3);">
+      <div style="font-size:2rem; margin-bottom:6px;">🧠</div>
+      <div style="font-size:1.4rem; font-weight:700; color:var(--accent3);">35 cm</div>
+      <div style="font-size:0.85rem; color:var(--text2);">Head Circumference (14 in)</div>
+    </div>
+  </div>
+
+  <h3>Weight Changes in the First Weeks</h3>
+  <div class="algo">
+    <div class="algo-step"><div class="algo-num">1</div><div><strong>Week 1:</strong> ↓ 10–12% below birth weight — due to excretion of extravascular fluid + limited intake</div></div>
+    <div class="algo-arrow">↓</div>
+    <div class="algo-step"><div class="algo-num">2</div><div><strong>After 2 weeks:</strong> Exceeds birth weight → gains ~30 g/day</div></div>
+    <div class="algo-arrow">↓</div>
+    <div class="algo-step"><div class="algo-num">3</div><div><strong>2–6 months:</strong> Gains ~20 g/day</div></div>
+    <div class="algo-arrow">↓</div>
+    <div class="algo-step"><div class="algo-num">4</div><div><strong>4 months:</strong> Birth weight <span class="hl">DOUBLED (×2)</span></div></div>
+    <div class="algo-arrow">↓</div>
+    <div class="algo-step"><div class="algo-num">5</div><div><strong>12 months (1 year):</strong> Birth weight <span class="hl">TRIPLED (×3)</span></div></div>
+    <div class="algo-arrow">↓</div>
+    <div class="algo-step"><div class="algo-num">6</div><div><strong>2.5 years:</strong> Birth weight <span class="hl">QUADRUPLED (×4)</span></div></div>
+  </div>
+
+  <h3>Behavioral States — MEMORIZE</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>State</th><th>Description</th><th>Key Point</th></tr>
+      <tr><td><strong>Quiet Sleep</strong></td><td>No movement, eyes closed firmly, deep regular breathing, NO motor activity</td><td>—</td></tr>
+      <tr><td><strong>Active Sleep</strong></td><td>Startles at noise, REM eye movements</td><td>—</td></tr>
+      <tr><td><strong>Drowsy</strong></td><td>Glazed or closing eyes</td><td>—</td></tr>
+      <tr><td><strong>Quiet Alert</strong></td><td>Still body, bright shiny eyes, inactive</td><td><span class="hl-green">⭐ BEST time to interact / breastfeed</span></td></tr>
+      <tr><td><strong>Fussy</strong></td><td>Jerky/disorganized movements, transitional state to crying, may startle</td><td>—</td></tr>
+      <tr><td><strong>Crying</strong></td><td>Peak at 6 weeks, up to 3 hrs/day → decreases to ≤1 hr by 3 months</td><td>Crying = primary mode of communication</td></tr>
+    </table>
+  </div>
+
+  <h3>Cognitive Development</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h4>What the Newborn Can Do</h4>
+      <ul>
+        <li>Recognize face, voice, smell (especially mother)</li>
+        <li>Differentiate patterns, colors (red & black), basic shapes</li>
+        <li>Prefers mother's voice — turns toward it (recognition memory)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>⭐ Habituation</h4>
+      <ul>
+        <li>↓ response to <em>repeated</em> stimuli</li>
+        <li>↑ attention to <em>novel</em> stimuli</li>
+        <li>Ability to discriminate between 2 stimuli</li>
+        <li>Self-regulation function (protective)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Emotional Development</h3>
+  <div class="alert alert-green">
+    <span class="alert-icon">💚</span>
+    <div><strong>Secure Attachment</strong> — Formed when parent CONSISTENTLY attends to the infant's urgent needs. Leads to: less crying at 1 year, less aggressive behavior at 2 years. <em>You CANNOT spoil a neonate.</em></div>
+  </div>
+
+  <h3>Principles of Physical Development</h3>
+  <div class="two-col">
+    <div class="card">
+      <h4>Cephalocaudal</h4>
+      <p>Head → Toe (downward progression)<br>Example: head control before walking</p>
+    </div>
+    <div class="card">
+      <h4>Proximodistal</h4>
+      <p>Midline → Periphery (outward)<br>Example: arm movements before finger control</p>
+    </div>
+  </div>
+
+  <h3>Neonatal Posture &amp; Movement</h3>
+  <ul>
+    <li>Posture: <strong>semi-flexed</strong> position</li>
+    <li>Limb movements: uncontrollable writhing, purposeless hand opening/closing</li>
+    <li>Sleep: evenly distributed throughout 24-hour day</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h3>Newborn Procedures (ENBS, OAE, ROR)</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Procedure</th><th>Purpose</th><th>Timing / Key Pearl</th><th>Law</th></tr>
+      <tr><td><strong>ENBS</strong><br>(Expanded NB Screening)</td><td>Detect >29 metabolic/genetic disorders<br>(G6PD, PKU, CAH, CH, GAL, MSUD)</td><td><span class="hl">AFTER 24 hours of life</span> (baby must have ingested milk/protein)</td><td>RA 9288</td></tr>
+      <tr><td><strong>OAE</strong><br>(Hearing Screening)</td><td>Detect hearing loss — Pass or Refer</td><td>Before discharge (hospital). Non-hospital babies: <span class="hl">within 3 months</span>. If abnormal → refer <span class="hl">before 6 months</span></td><td>RA 9707</td></tr>
+      <tr><td><strong>Red Orange Reflex</strong></td><td>Screen for visual defects</td><td><span class="hl-red">ABSENCE of ROR / WHITE reflex (leukocoria) = REFER</span></td><td>—</td></tr>
+      <tr><td><strong>CCHD Screening</strong></td><td>Screen for congenital heart disease</td><td>Pulse oximeter: right hand (preductal) + another extremity (postductal)</td><td>—</td></tr>
+      <tr><td><strong>Bilirubin</strong></td><td>Detect jaundice</td><td>Transcutaneous (non-invasive) or serum</td><td>—</td></tr>
+    </table>
+  </div>
+
+  <h3>UNANG YAKAP (EINC) — Steps in Order</h3>
+  <div class="algo">
+    <div class="algo-step"><div class="algo-num">1</div><div>Immediate and thorough <strong>drying</strong></div></div>
+    <div class="algo-step"><div class="algo-num">2</div><div>Early <strong>skin-to-skin contact</strong></div></div>
+    <div class="algo-step"><div class="algo-num">3</div><div>Properly-timed <strong>cord clamping</strong></div></div>
+    <div class="algo-step"><div class="algo-num">4</div><div><strong>Non-separation</strong> from mother for early breastfeeding</div></div>
+  </div>
+  <div class="alert alert-red">
+    <span class="alert-icon">🚨</span>
+    <div><strong>Exam Trap:</strong> The FIRST step is DRYING — NOT skin-to-skin contact!</div>
+  </div>
+
+  <h3>Newborn Medications at Birth</h3>
+  <div class="card-grid3">
+    <div class="card" style="border-left: 3px solid var(--accent);">
+      <strong>BCG</strong><br><small>Protects against severe/extrapulmonary TB. Causes scarring → inform parents!</small>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--accent4);">
+      <strong>Hepatitis B Vaccine</strong><br><small>Given at birth</small>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--accent3);">
+      <strong>Vitamin K</strong><br><small>Prevents hemorrhagic disease of the newborn</small>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--accent6);">
+      <strong>Erythromycin Ointment</strong><br><small>Protects against neonatal conjunctivitis</small>
+    </div>
+  </div>
+
+  <h3>Newborn Red Flags (Go to ER!)</h3>
+  <div class="card-grid">
+    <div class="card">
+      <ul>
+        <li class="flag-red">Refusal to feed / poor suck → risk for hypoglycemia</li>
+        <li class="flag-red">No spontaneous movement / poor activity</li>
+        <li class="flag-red">Fast breathing / difficulty breathing</li>
+        <li class="flag-red">Coughing</li>
+      </ul>
+    </div>
+    <div class="card">
+      <ul>
+        <li class="flag-red">Vomiting (esp. bilious or bloody)</li>
+        <li class="flag-red">Fever or low body temperature</li>
+        <li class="flag-red">Severe jaundice / yellowing</li>
+        <li class="flag-red">Watery or acholic (pale) stool</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= GROWTH & DEV ============================= -->
+<div id="growth" class="section">
+  <div class="progress-bar"></div>
+  <h2>📏 Growth &amp; Development</h2>
+
+  <div class="alert alert-gold">
+    <span class="alert-icon">⭐</span>
+    <div><strong>Growth Chart = Most Powerful Tool</strong> in growth assessment. Plot sequentially — trends matter more than a single measurement. PPS recommends WHO growth charts (birth to 19 years).</div>
+  </div>
+
+  <h3>Growth Measurement Guide</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Indicator</th><th>Measures</th><th>Detects</th><th>Can classify obesity?</th></tr>
+      <tr><td><strong>Weight-for-Age</strong></td><td>Body weight relative to age</td><td>Underweight / severely underweight</td><td>❌ No</td></tr>
+      <tr><td><strong>Weight-for-Length/Height</strong></td><td>Weight relative to attained growth</td><td>Wasting / severely wasted; overweight</td><td>✅ Yes</td></tr>
+      <tr><td><strong>Length/Height-for-Age</strong></td><td>Attained growth relative to age</td><td>Stunting / Tall stature</td><td>❌ No</td></tr>
+      <tr><td><strong>BMI-for-Age</strong></td><td>BMI = wt(kg)/ht²(m²)</td><td>Overweight / Obesity (ages 2–20)</td><td>✅ Yes</td></tr>
+    </table>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Z-Score</th><th>Length/Height-for-Age</th><th>Weight-for-Age</th><th>Weight-for-Length/BMI</th></tr>
+      <tr><td>>+3</td><td>Very tall (possible endocrine)</td><td>—</td><td><span class="tag tag-red">Obese</span></td></tr>
+      <tr><td>>+2</td><td>Tall</td><td>Possible growth problem</td><td><span class="tag tag-orange">Overweight</span></td></tr>
+      <tr><td>>+1</td><td>Normal</td><td>—</td><td>Possible risk overweight</td></tr>
+      <tr><td>0 (median)</td><td colspan="3" style="text-align:center; background:#e8f5e9; font-weight:600;">NORMAL</td></tr>
+      <tr><td>&lt;-2</td><td><span class="tag tag-orange">Stunted</span></td><td><span class="tag tag-orange">Underweight</span></td><td><span class="tag tag-orange">Wasted</span></td></tr>
+      <tr><td>&lt;-3</td><td><span class="tag tag-red">Severely Stunted</span></td><td><span class="tag tag-red">Severely Underweight</span></td><td><span class="tag tag-red">Severely Wasted</span></td></tr>
+    </table>
+  </div>
+
+  <h3>Measurement Technique (Don't Mix Up!)</h3>
+  <div class="algo">
+    <div class="algo-step"><div class="algo-num">1</div><div><strong>&lt;2 years old:</strong> Recumbent length using <span class="hl">infantometer</span>. If child won't lie down → measure standing height and <span class="hl-green">ADD 0.7 cm</span></div></div>
+    <div class="algo-step"><div class="algo-num">2</div><div><strong>≥2 years old:</strong> Standing height using <span class="hl">stadiometer</span>. If cannot stand → measure recumbent length and <span class="hl-red">SUBTRACT 0.7 cm</span></div></div>
+    <div class="algo-step"><div class="algo-num">3</div><div><strong>Weight &lt;2 years:</strong> <span class="hl">Tared weighing</span> (weigh mother+child together, subtract mother's weight)</div></div>
+    <div class="algo-step"><div class="algo-num">4</div><div><strong>Head Circumference:</strong> glabella/supraorbital ridge (anterior) → most prominent occiput (posterior). Microcephaly: &lt;2 SD. Macrocephaly: &gt;2 SD</div></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>5 Domains of Development</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Domain</th><th>Sub-type</th><th>Definition</th></tr>
+      <tr><td rowspan="2"><strong>Motor</strong></td><td>Gross</td><td>Control large muscle groups — balance, stance, gait</td></tr>
+      <tr><td>Fine</td><td>Use hands to manipulate objects</td></tr>
+      <tr><td rowspan="2"><strong>Language</strong></td><td>Receptive</td><td>Comprehend/understand</td></tr>
+      <tr><td>Expressive</td><td>Expression of verbal/non-verbal symbols</td></tr>
+      <tr><td colspan="2"><strong>Socio-Emotional / Personal-Social</strong></td><td>Interact, form & maintain relationships</td></tr>
+      <tr><td colspan="2"><strong>Cognitive</strong></td><td>Learn, understand, solve problems</td></tr>
+    </table>
+  </div>
+
+  <h3>⭐ Developmental Milestones by Age</h3>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr>
+        <th>Age</th>
+        <th>Gross Motor</th>
+        <th>Fine Motor</th>
+        <th>Language</th>
+        <th>Cognitive / Social</th>
+      </tr>
+      <!-- NEONATAL -->
+      <tr>
+        <td><strong class="tl-age">Newborn</strong></td>
+        <td>Semi-flexed posture, writhing</td>
+        <td>Purposeless hand open/close</td>
+        <td>Crying (peaks 6 wks)</td>
+        <td>Habituation; recognizes mother</td>
+      </tr>
+      <!-- 2 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">2 months</strong></td>
+        <td><span class="hl">Holds head steadily</span><br>Cannot raise head = 🚩</td>
+        <td>—</td>
+        <td>Cooing (3 wks), Social smile (1.5 mo), Voluntary smile + eye contact</td>
+        <td>(-) Object permanence (stares at spot)</td>
+      </tr>
+      <!-- 3 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">3 months</strong></td>
+        <td>No head lag when pulled to sit</td>
+        <td>Grasps rattle (3.5 mo)</td>
+        <td>Cooing</td>
+        <td>—</td>
+      </tr>
+      <!-- 4 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">4 months</strong></td>
+        <td>Asymmetric tonic reflex <strong>gone</strong></td>
+        <td>Palmar reflex gone; Reaches for objects; inspects hands in midline</td>
+        <td>—</td>
+        <td>⭐ <span class="hl">HATCHING</span> — increasing interest in world; self-discovery; stares at own hand; cause & effect</td>
+      </tr>
+      <!-- 5-6 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">5–6 months</strong></td>
+        <td><span class="hl">Sits without support (6 mo)</span></td>
+        <td>Transfer hand to hand (5.5 mo)</td>
+        <td><span class="hl">Monosyllabic babble (6 mo)</span></td>
+        <td>Happy Period — mutual attachment &amp; enjoyment</td>
+      </tr>
+      <!-- 6-7 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">6–7 months</strong></td>
+        <td>Sits unsupported</td>
+        <td>—</td>
+        <td>Inhibits to "No" (7 mo); Follows 1-step command with gesture</td>
+        <td>Stranger anxiety begins</td>
+      </tr>
+      <!-- 8-9 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">8–9 months</strong></td>
+        <td>Crawls, pulls to stand (8 mo); Pivots while sitting (9–10 mo)</td>
+        <td>Thumb-finger grasp (8–9 mo)</td>
+        <td>Joint/Shared attention (9 mo) — absent in ASD 🚩</td>
+        <td>⭐ <span class="hl">Object Permanence at 9 months</span> — first sign of memory; also manifests stranger anxiety</td>
+      </tr>
+      <!-- 10 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">10 months</strong></td>
+        <td>—</td>
+        <td>—</td>
+        <td>Follows 1-step command <em>without</em> gesture; Points to objects (absent = 🚩 ASD); Says "mama" or "dada"</td>
+        <td>—</td>
+      </tr>
+      <!-- 12 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">12 months (1 yr)</strong></td>
+        <td>⭐ <span class="hl">Walks alone</span>; Birth weight TRIPLED</td>
+        <td><span class="hl">Neat pincer grasp</span>; Turns pages of book</td>
+        <td>⭐ <span class="hl">First real word</span>; Mandibular central incisors erupt</td>
+        <td>Egocentric symbolic play; Autonomy emerges (2-spoon method, finger foods)</td>
+      </tr>
+      <!-- 13-15 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">13–15 months</strong></td>
+        <td>—</td>
+        <td>Scribbles (13 mo); Tower of 2 cubes (15 mo)</td>
+        <td>Speaks 4–6 words (15 mo); Points to major body parts (15 mo)</td>
+        <td>Secure attachment as base for exploration</td>
+      </tr>
+      <!-- 16-18 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">16–18 months</strong></td>
+        <td>Runs (16 mo)</td>
+        <td>—</td>
+        <td>Speaks 10–15 words (18 mo)</td>
+        <td>Separation anxiety; Use of transitional objects</td>
+      </tr>
+      <!-- 19-24 MONTHS -->
+      <tr>
+        <td><strong class="tl-age">19–24 months</strong></td>
+        <td>Walk up/down stairs 1-step (24 mo)</td>
+        <td>Tower of 6 cubes (22 mo)</td>
+        <td>2-word sentences (19 mo, corresponds to 50-word vocab); Understands 2-step commands (24 mo)</td>
+        <td>Rapprochement; Object permanence firmly established; Symbolic transformation (play with dolls)</td>
+      </tr>
+      <!-- 2.5 YEARS -->
+      <tr>
+        <td><strong class="tl-age">2.5 years</strong></td>
+        <td>—</td>
+        <td>—</td>
+        <td>Refers to self by "I"; knows full name</td>
+        <td>Birth weight quadrupled ×4</td>
+      </tr>
+      <!-- 3 YEARS -->
+      <tr>
+        <td><strong class="tl-age">3 years (36 mo)</strong></td>
+        <td>Ride tricycle; Stand on 1 foot</td>
+        <td>⭐ <span class="hl">Copy a circle</span></td>
+        <td>Knows age & sex; Counts 3 objects; Most speech intelligible to stranger</td>
+        <td>All 20 primary teeth erupted; Handedness established; Bedwetting resolves in girls</td>
+      </tr>
+      <!-- 4 YEARS -->
+      <tr>
+        <td><strong class="tl-age">4 years (48 mo)</strong></td>
+        <td>Hop on 1 foot</td>
+        <td>⭐ <span class="hl">Copy cross and square</span></td>
+        <td>Counts 4 coins; Tells story; Uses past tense; Visual acuity 20/20</td>
+        <td>Bedwetting resolves in boys</td>
+      </tr>
+      <!-- 5 YEARS -->
+      <tr>
+        <td><strong class="tl-age">5 years (60 mo)</strong></td>
+        <td>Skip</td>
+        <td>⭐ <span class="hl">Copy a triangle</span></td>
+        <td>Name 4 colors; Counts 10 coins; Uses future tense</td>
+        <td>—</td>
+      </tr>
+      <!-- 6-11 YEARS -->
+      <tr>
+        <td><strong class="tl-age">6–11 years</strong></td>
+        <td>Growth: 3–3.5 kg/yr weight; 6–7 cm/yr height</td>
+        <td>—</td>
+        <td>Comprehend complex instructions; construct paragraphs</td>
+        <td>⭐ Self-esteem central issue; Peer pressure; Conscience develops; Gender identification; Bullying risk</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="alert alert-red">
+    <span class="alert-icon">🚨</span>
+    <div><strong>Shape Drawing Trick — MEMORIZE:</strong> 3 = Circle, 4 = Cross + Square, 5 = Triangle<br>
+    <strong>Gross Motor Trick:</strong> 3 = tricycle + 1-foot stand, 4 = hop 1-foot, 5 = skip</div>
+  </div>
+
+  <h3>Cognitive Stages (Piaget)</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Stage</th><th>Age</th><th>Key Features</th></tr>
+      <tr><td><strong>Sensorimotor</strong></td><td>0–2 years</td><td>Object permanence develops at ~9 months; learns through senses and movement</td></tr>
+      <tr><td><strong>Pre-operational</strong></td><td>2–7 years</td><td>⭐ <span class="hl">Magical thinking</span>, <span class="hl">Egocentrism</span> (can't take another's POV), Perception-dominated; Symbolic play</td></tr>
+      <tr><td><strong>Concrete Operational</strong></td><td>7–11 years</td><td>Apply rules, logical reasoning about concrete objects; early adolescence</td></tr>
+      <tr><td><strong>Formal Operational</strong></td><td>12+ years</td><td>Abstract thought, hypothesis testing; middle adolescence onward</td></tr>
+    </table>
+  </div>
+
+  <h3>Language Development Rules</h3>
+  <div class="card-grid">
+    <div class="card" style="border-left: 4px solid var(--accent);">
+      <h4>Rule of Thumb</h4>
+      <p><span class="hl">Number of words in a typical sentence = child's age</span><br>
+      e.g., 3 years old = 3-word sentences</p>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--accent4);">
+      <h4>Screen Time (AAP Guidelines)</h4>
+      <ul>
+        <li><strong>≤18 months:</strong> No screen time (exception: video calls)</li>
+        <li><strong>18 mo–2 yrs:</strong> Limited + no solo use</li>
+        <li><strong>2–5 yrs:</strong> Max 1 hour/day, co-view</li>
+        <li><strong>≥6 yrs:</strong> Consistent limits, no screen affecting sleep</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Tantrums</h3>
+  <div class="alert alert-blue">
+    <span class="alert-icon">ℹ️</span>
+    <div><strong>Peak prevalence: 2–4 years.</strong> Causes: inability to delay gratification, displace anger, verbally express emotions. <span class="hl-red">RED FLAG: &gt;15 minutes duration OR &gt;3 times/day</span> → suggests underlying medical/emotional/social problem.</div>
+  </div>
+
+  <h3>Adolescence — 3 Phases</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Domain</th><th>Early (10–13)</th><th>Middle (14–17)</th><th>Late (18–21)</th></tr>
+      <tr><td><strong>Cognition</strong></td><td>Concrete operational; rules to avoid punishment</td><td>Formal operational; abstract thought; may perceive future</td><td>Future-oriented; idealistic; improved impulse control; distinguishes law from morality</td></tr>
+      <tr><td><strong>Self</strong></td><td>Preoccupied with changing body; self-conscious</td><td>Concern with attractiveness; introspection</td><td>Stable body image; consolidated identity</td></tr>
+      <tr><td><strong>Family</strong></td><td>Increased need for privacy</td><td>Conflicts over independence</td><td>Separation; autonomous; "adult" relationship</td></tr>
+      <tr><td><strong>Peers</strong></td><td>Same-sex affiliations</td><td>Intense peer groups; conformity</td><td>Peer values recede</td></tr>
+      <tr><td><strong>Sexuality</strong></td><td>Interest; anxiety about changes; limited intimacy</td><td>Testing attractiveness; initiation of sexual activity</td><td>Consolidated identity; intimacy focus; future planning</td></tr>
+    </table>
+  </div>
+
+  <h3>Developmental Surveillance vs Screening</h3>
+  <div class="two-col">
+    <div class="card" style="border-top: 3px solid var(--accent);">
+      <h4>Surveillance (Every Visit)</h4>
+      <ul>
+        <li>Observation, history, documentation — NO standardized tool</li>
+        <li>Analogy: checking temp with back of hand</li>
+        <li>Done at every well-child visit</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top: 3px solid var(--accent4);">
+      <h4>Screening (Specific Ages)</h4>
+      <ul>
+        <li>Standardized validated tool (PEDS, M-CHAT-R)</li>
+        <li>Analogy: using a thermometer</li>
+        <li>Ages: <span class="hl">9, 18, 24 (or 30) months</span> → then yearly</li>
+        <li>Also done anytime parent has concerns</li>
+      </ul>
+    </div>
+  </div>
+  <div class="alert alert-gold">
+    <span class="alert-icon">⭐</span>
+    <div>If child FAILS a screening test → <strong>NOT immediately diagnosed</strong> → refer for comprehensive developmental evaluation. Screening only detects RISK.</div>
+  </div>
+</div>
+
+<!-- ============================= PREVENTIVE PEDIA ============================= -->
+<div id="preventive" class="section">
+  <div class="progress-bar"></div>
+  <h2>🛡️ Preventive Pediatrics</h2>
+
+  <div class="alert alert-gold">
+    <span class="alert-icon">⭐</span>
+    <div><strong>Cornerstone of child healthcare.</strong> Focuses on illness prevention, health promotion, and well-being — from infancy to adolescence via early intervention, routine screening, immunization, and anticipatory guidance.</div>
+  </div>
+
+  <h3>Three Pillars of Preventive Pediatrics</h3>
+  <div class="card-grid3">
+    <div class="card" style="border-top: 4px solid var(--accent);">
+      <h4>Illness Prevention</h4>
+      <ul>
+        <li>Vaccinations</li>
+        <li>Regular check-ups</li>
+        <li>Screenings (vision, hearing)</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--accent4);">
+      <h4>Health Promotion</h4>
+      <ul>
+        <li>Nutrition & balanced diet</li>
+        <li>Physical activity</li>
+        <li>Oral health</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--accent3);">
+      <h4>Well-Being</h4>
+      <ul>
+        <li>Mental health</li>
+        <li>Social development</li>
+        <li>Safety & injury prevention</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Prenatal Visit — Key Points</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Topic</th><th>What to Ask/Teach</th><th>Why Important</th></tr>
+      <tr><td>Family History</td><td>Genetic diseases, CHD, chromosomal abnormalities</td><td>Risk prediction</td></tr>
+      <tr><td>Blood Type</td><td>ABO incompatibility</td><td>Early jaundice risk</td></tr>
+      <tr><td>Maternal Illness</td><td>Infections</td><td>Early-onset sepsis risk</td></tr>
+      <tr><td>Nutrition</td><td>Folic acid supplements, prenatal vitamins</td><td>Prevent neural tube defects (spina bifida)</td></tr>
+      <tr><td>Lifestyle</td><td>Avoid alcohol, smoking, vaping, teratogens</td><td>Teratogenicity</td></tr>
+      <tr><td>Infant Care</td><td>Breastfeeding technique, safe sleep (supine on firm mattress)</td><td>Prevent SIDS</td></tr>
+    </table>
+  </div>
+
+  <h3>Breastfeeding</h3>
+  <div class="alert alert-green">
+    <span class="alert-icon">💚</span>
+    <div><strong>WHO/PPS Recommendation:</strong> Exclusive breastfeeding until <span class="hl">6 months</span>, continued breastfeeding up to <span class="hl">2 years</span> and beyond (after introduction of complementary feeding).</div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <h4>Benefits for Baby</h4>
+      <ul>
+        <li>Antibodies — immune protection</li>
+        <li>DHA → brain development</li>
+        <li>Prevents: SIDS, URTI, diarrhea, asthma, eczema, obesity, T1DM, T2DM, leukemia, tooth decay</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Benefits for Mother</h4>
+      <ul>
+        <li>↓ Cancer risk (breast, uterus, ovaries)</li>
+        <li>↓ Postpartum depression</li>
+        <li>↓ Postpartum hemorrhage</li>
+        <li>Promotes return to pre-pregnancy weight</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <h4>Breastfeeding Technique</h4>
+    <ul>
+      <li>Position: face-to-face, chest-to-chest, tummy-to-tummy (straight line)</li>
+      <li>Latch: entire nipple + 1 inch of surrounding areola; chin touches breast, lower lip turned outward</li>
+      <li>Duration: 15–30 minutes per breast (extracts foremilk AND hindmilk)</li>
+      <li>Frequency: 8–10 times or more per day (per demand)</li>
+      <li>Watch for hunger cues: mouth opening, head turning, hand to mouth</li>
+    </ul>
+  </div>
+
+  <h3>Complementary Feeding</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Age</th><th>Food Consistency</th><th>Meal Frequency</th></tr>
+      <tr><td>6 months</td><td>Pureed food</td><td>2–3× per day</td></tr>
+      <tr><td>8 months</td><td>Finger food</td><td rowspan="2">3–4× per day + snacks</td></tr>
+      <tr><td>10 months</td><td>Chopped food</td></tr>
+      <tr><td>12 months</td><td>Family table food</td><td>Family meals</td></tr>
+    </table>
+  </div>
+  <div class="alert alert-red">
+    <span class="alert-icon">🚫</span>
+    <div><strong>NEVER give to infants:</strong> Honey (Clostridium botulinum risk), Salt (before 1 year), raw/undercooked food. <strong>Avoid:</strong> sugary drinks. Introduce foods one by one (check for allergies first).</div>
+  </div>
+
+  <h3>⭐ Dental Care</h3>
+  <div class="alert alert-green">
+    <span class="alert-icon">🦷</span>
+    <div><strong>First Dental Visit:</strong> At eruption of 1st tooth (~6 months) and <strong>no later than 12 months.</strong></div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Age</th><th>Fluoride Concentration</th><th>Amount</th><th>Daily Fluoride</th></tr>
+      <tr><td>6 mo – &lt;2 yrs</td><td>1000 ppm</td><td>Smear (2.5 mm)</td><td>2 × 0.125 mg = 0.25 mg</td></tr>
+      <tr><td>2 yrs – &lt;6 yrs</td><td>1000 ppm</td><td>Pea-sized (5 mm)</td><td>2 × 0.25 mg = 0.50 mg</td></tr>
+      <tr><td>≥6 yrs</td><td>1500 ppm</td><td>Full bristle length (10–20 mm)</td><td>2 × 0.5–1.0 mg = 1.0 mg</td></tr>
+    </table>
+  </div>
+  <p><em>Key tips: brush twice daily, supervise brushing, spit don't rinse (especially &lt;3 years), avoid sugary drinks/carbonated drinks.</em></p>
+
+  <h3>Iron &amp; Vitamin A Supplementation</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Target</th><th>Preparation</th><th>Dose</th></tr>
+      <tr><td>Low Birth Weight (&lt;2.5 kg)</td><td>Drops (15 mg/0.6 mL)</td><td>0.3 mL/day — start at 2 months until 6 months</td></tr>
+      <tr><td>Infants 6–11 months</td><td>Drops (15 mg/0.6 mL)</td><td>0.6 mL/day × 3 months</td></tr>
+      <tr><td>Children 1–5 years</td><td>Syrup (30 mg/5 mL)</td><td>1 tsp/day × 3 months OR 30 mg/week × 6 months</td></tr>
+      <tr><td>Adolescent girls (10–19 yrs)</td><td>Tablet (60 mg + 400 mcg folic acid)</td><td>1 tablet/day</td></tr>
+    </table>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Target</th><th>Dose</th></tr>
+      <tr><td>Infants 6–11 months</td><td>100,000 IU — single dose (usually given at 9 months with measles vaccine)</td></tr>
+      <tr><td>Children 12–59 months</td><td>200,000 IU — 1 capsule every 6 months</td></tr>
+    </table>
+  </div>
+
+  <h3>Deworming</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Drug</th><th>Age</th><th>Dose</th><th>Frequency</th></tr>
+      <tr><td>Albendazole</td><td>12–23 months</td><td>200 mg, single dose</td><td>Every 6 months</td></tr>
+      <tr><td>Albendazole</td><td>≥24 months</td><td>400 mg, single dose</td><td>Every 6 months</td></tr>
+      <tr><td>Mebendazole</td><td>≥12 months</td><td>500 mg, single dose</td><td>Every 6 months</td></tr>
+    </table>
+  </div>
+  <div class="alert alert-red">
+    <span class="alert-icon">⚠️</span>
+    <div><strong>Deworming CONTRAINDICATED in:</strong> severe malnutrition, high-grade fever, profuse diarrhea, abdominal pain, serious illness, previous hypersensitivity to antihelminthics.<br>
+    <strong>Always give on full stomach!</strong></div>
+  </div>
+
+  <h3>Blood Pressure Monitoring</h3>
+  <div class="alert alert-blue">
+    <span class="alert-icon">ℹ️</span>
+    <div><strong>Start annual BP monitoring at age 3</strong> (or earlier for high-risk conditions). Hypertensive patients → refer to subspecialist.</div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Category</th><th>Ages 1–13</th><th>Age &gt;13</th></tr>
+      <tr><td>Elevated BP</td><td>&gt;90th–&lt;95th percentile; OR 120/80–129/&lt;80 mmHg</td><td>120/80–&lt;95th percentile</td></tr>
+      <tr><td>Stage 1 HTN</td><td>&gt;95th–&lt;95th + 12 mmHg; OR 130/80–139/89</td><td>130/80–139/89</td></tr>
+      <tr><td>Stage 2 HTN</td><td>&gt;95th + 12 mmHg; OR ≥140/90</td><td>≥140/90</td></tr>
+    </table>
+  </div>
+
+  <h3>Adolescent Health Care — HEEADSSS</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Letter</th><th>Topic</th><th>Sample Questions</th></tr>
+      <tr><td class="mono"><strong>H</strong></td><td>Home</td><td>Who lives at home? What are relationships like?</td></tr>
+      <tr><td class="mono"><strong>E</strong></td><td>Education/Employment</td><td>Going to school? Exams? Bullying?</td></tr>
+      <tr><td class="mono"><strong>E</strong></td><td>Eating Behavior</td><td>Stress from eating habits, weight or body shape changes?</td></tr>
+      <tr><td class="mono"><strong>A</strong></td><td>Activities</td><td>Hobbies? Internet/TV time? Online bullying?</td></tr>
+      <tr><td class="mono"><strong>D</strong></td><td>Drugs</td><td>Tobacco, alcohol, drugs use by self, friends, or family?</td></tr>
+      <tr><td class="mono"><strong>S</strong></td><td>Sexuality</td><td>Current/previous relationships? Sexual orientation?</td></tr>
+      <tr><td class="mono"><strong>S</strong></td><td>Suicide/Self-harm</td><td>Sad? Stressed? Previous thoughts?</td></tr>
+      <tr><td class="mono"><strong>S</strong></td><td>Safety</td><td>Risk-taking? Violence at home or school?</td></tr>
+      <tr><td class="mono"><strong>S</strong></td><td>Strengths/Spirituality</td><td>Personal strengths? Who do you go to for support?</td></tr>
+    </table>
+  </div>
+  <div class="alert alert-red">
+    <span class="alert-icon">⚠️</span>
+    <div>Conduct HEEADSSS <strong>alone with the adolescent</strong> — WITHOUT parents present. PHQ-9 for depression starting at 12 years old. Sleep: 13–18 yrs = 8–10 hours/day.</div>
+  </div>
+
+  <h3>Adolescent Screening Procedures</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Procedure</th><th>Details</th></tr>
+      <tr><td>Complete Blood Count</td><td>Screen for anemia — every stage of adolescence</td></tr>
+      <tr><td>Urinalysis</td><td>Screen for UTI — once (preferably initial visit)</td></tr>
+      <tr><td>Tuberculosis</td><td>If at risk</td></tr>
+      <tr><td>Dyslipidemia</td><td>Annually assess risk; screen once at 9–11 yrs AND 17–21 yrs</td></tr>
+      <tr><td>STIs</td><td>Annually for sexually active adolescents</td></tr>
+      <tr><td>Scoliosis/Kyphosis</td><td>Once at 10–12 yrs (females), 13–14 yrs (males)</td></tr>
+      <tr><td>Visual Screening</td><td>At 10, 12, and 15 years old</td></tr>
+      <tr><td>Hearing Screening</td><td>Once during early, middle, and late adolescence</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============================= IMMUNIZATION ============================= -->
+<div id="immuno" class="section">
+  <div class="progress-bar"></div>
+  <h2>💉 Immunization</h2>
+
+  <div class="alert alert-gold">
+    <span class="alert-icon">⭐</span>
+    <div><strong>Key Concept:</strong> Never restart a vaccine series due to delay — always continue where you left off. Live vaccines = SC route. Inactivated = IM route.</div>
+  </div>
+
+  <h3>Active vs. Passive Immunity</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Feature</th><th>Active Immunity</th><th>Passive Immunity</th></tr>
+      <tr><td>Mechanism</td><td>Body produces own antibodies (infection or vaccination)</td><td>Ready-made antibodies given</td></tr>
+      <tr><td>Duration</td><td><span class="hl-green">Long-term (sometimes lifelong)</span></td><td><span class="hl-red">Short-lived</span></td></tr>
+      <tr><td>Onset</td><td>Takes time to develop</td><td><span class="hl-green">Immediate protection</span></td></tr>
+      <tr><td>Examples (Natural)</td><td>Recovery from infection</td><td>Maternal IgA (breastmilk), placental IgG</td></tr>
+      <tr><td>Examples (Artificial)</td><td>Vaccination</td><td>IVIG, monoclonal antibodies, HBIG</td></tr>
+    </table>
+  </div>
+
+  <h3>Types of Vaccines</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Type</th><th>Examples</th><th>Route</th><th>Key Feature</th></tr>
+      <tr><td><strong>Live-Attenuated</strong></td><td>Varicella, MMR, OPV, Rotavirus, some influenza</td><td><span class="hl-green">SC</span> (or Oral)</td><td>Long-term immunity; 2nd dose catches non-responders</td></tr>
+      <tr><td><strong>Inactivated (Whole)</strong></td><td>Polio (IPV), Hepatitis A</td><td><span class="hl-blue">IM</span></td><td>Needs booster doses</td></tr>
+      <tr><td><strong>Subunit (Part)</strong></td><td>Acellular pertussis, Hep B</td><td><span class="hl-blue">IM</span></td><td>—</td></tr>
+      <tr><td><strong>Polysaccharide Conjugate</strong></td><td>PCV, Meningococcal, Hib</td><td><span class="hl-blue">IM</span></td><td>Higher antibody response vs plain polysaccharide</td></tr>
+      <tr><td><strong>Toxoid</strong></td><td>Tetanus, Diphtheria</td><td><span class="hl-blue">IM</span></td><td>Modified toxin — non-toxic but immunogenic</td></tr>
+    </table>
+  </div>
+
+  <div class="alert alert-red">
+    <span class="alert-icon">🔑</span>
+    <div><strong>Route Memory Trick:</strong><br>
+    ORAL: OPV, Rotavirus<br>
+    SC (Subcutaneous): LIVE vaccines = Varicella, MMR<br>
+    IM (Intramuscular): Most INACTIVATED vaccines, Pentavalent, PCV, DPT, Hep B<br>
+    ID (Intradermal): BCG, Rabies (can also be IM)</div>
+  </div>
+
+  <h3>Vaccine Content — What's Inside?</h3>
+  <div class="card-grid">
+    <div class="card">
+      <ul>
+        <li><strong>Suspending fluid:</strong> Sterile water or saline</li>
+        <li><strong>Preservatives:</strong> For multidose vials — prevent contamination with repeated entry. Thimerosal was removed (1999); no thimerosal in PH vaccines</li>
+      </ul>
+    </div>
+    <div class="card">
+      <ul>
+        <li><strong>Stabilizers:</strong> Prevent antigen degradation (gelatin, ethanol)</li>
+        <li><strong>Adjuvants:</strong> Enhance immune response. <span class="hl">Only licensed: aluminum salts</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>⭐ PH vs US Immunization Schedule</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Feature</th><th>Philippines (PPS/PIDSP)</th><th>United States (CDC)</th></tr>
+      <tr><td>DPT/Pentavalent</td><td><span class="hl">6, 10, 14 weeks</span></td><td>2, 4, 6 months</td></tr>
+      <tr><td>PCV</td><td>6, 10, 14 weeks</td><td>2, 4, 6 months</td></tr>
+      <tr><td>Polio</td><td>OPV (6,10,14 wks) + IPV (14 wks, 9 mo)</td><td>IPV only (2,4,6 months)</td></tr>
+      <tr><td>Completion of early series</td><td>~4 months</td><td>~6 months</td></tr>
+      <tr><td>Unique PH vaccines</td><td>BCG, Typhoid, Cholera, Rabies, JEV</td><td>RSV, COVID-19, Dengue, Mpox, LAIV</td></tr>
+      <tr><td>Hep B inclusion</td><td>In Pentavalent (public); separate (private)</td><td>Given separately</td></tr>
+    </table>
+  </div>
+  <div class="alert alert-blue">
+    <span class="alert-icon">ℹ️</span>
+    <div>PH gives vaccines EARLIER (6,10,14 weeks) to reduce loss to follow-up from a public health standpoint, following only the minimum interval.</div>
+  </div>
+
+  <h3>NIP Vaccine Quick Reference</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Vaccine</th><th>Type</th><th>Min Age</th><th>Route</th><th>Routine Schedule (PH)</th><th>Key Pearl</th></tr>
+      <tr><td><strong>BCG</strong></td><td>Live attenuated</td><td>At birth</td><td>ID (deltoid/hip)</td><td>Single dose ASAP</td><td>Normal: induration → pus (3 wk) → scar (2 mo). <span class="hl-red">Live → SC rule exception</span></td></tr>
+      <tr><td><strong>Hepatitis B</strong></td><td>Inactivated</td><td>At birth</td><td>IM</td><td>Birth → 1-2 mo → &lt;24 wks → ≥24 wks (4 doses in PH because 3rd dose given before 24 wks)</td><td>HBsAg+ mom → give HBV + HBIG within 12 hours</td></tr>
+      <tr><td><strong>DPT (Pentavalent)</strong></td><td>Inactivated combo</td><td>6 weeks</td><td>IM</td><td>6, 10, 14 wks; boosters at 12–18 mo, 4–6 yrs, Tdap 7–18 yrs</td><td>Never restart. Resume series regardless of interval.</td></tr>
+      <tr><td><strong>OPV</strong></td><td>Live (oral)</td><td>6 weeks</td><td>PO</td><td>6, 10, 14 weeks</td><td>Gives intestinal immunity. <span class="hl-red">CONTRAINDICATED in immunocompromised</span></td></tr>
+      <tr><td><strong>IPV</strong></td><td>Inactivated</td><td>6 weeks</td><td>IM</td><td>14 weeks, 9 months</td><td>Safe for immunocompromised</td></tr>
+      <tr><td><strong>PCV</strong></td><td>Inactivated conjugate</td><td>6 weeks</td><td>IM</td><td>6, 10, 14 wks; booster 12–15 mo</td><td>Prevents pneumonia, meningitis, otitis media</td></tr>
+      <tr><td><strong>Measles</strong></td><td>Live attenuated</td><td>9 months</td><td>SC</td><td>9 months</td><td>Outbreak: give as early as 6 mo. Post-exposure: within 72 hours</td></tr>
+      <tr><td><strong>MMR</strong></td><td>Live attenuated</td><td>12 months</td><td>SC</td><td>2 doses (12 mo + 4–6 yrs)</td><td>Dose at 9 months does NOT count as MMR series. MMR does NOT cause autism.</td></tr>
+      <tr><td><strong>Rotavirus (RV1)</strong></td><td>Live oral</td><td>6 weeks</td><td>PO</td><td>2-dose series (min interval 4 wks)</td><td>Last dose NOT beyond 24 weeks (intussusception risk). NO catch-up after age limit</td></tr>
+      <tr><td><strong>Varicella</strong></td><td>Live attenuated</td><td>12 months</td><td>SC (or IM)</td><td>2 doses; 2nd dose at 4–6 yrs (min 3 mo interval)</td><td>Post-exposure: 3–5 days. No vaccine if previous infection.</td></tr>
+      <tr><td><strong>Influenza</strong></td><td>Inactivated</td><td>6 months</td><td>IM/SC</td><td>Annual (preferably Feb); 6 mo–8 yrs first time: 2 doses 4 wks apart</td><td>All children; high-risk priority</td></tr>
+    </table>
+  </div>
+
+  <h3>⭐ Hepatitis B Special Scenarios</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Scenario</th><th>Management</th></tr>
+      <tr><td>HBsAg(+) mother, any birth weight</td><td>HBV + HBIG (0.5 mL) within <span class="hl">12 hours</span> of life. HBIG not later than 7 days if not immediately available.</td></tr>
+      <tr><td>Unknown HBsAg status, BW ≥2 kg</td><td>HBV within 12 hours; determine mother's HBsAg ASAP. If (+), give HBIG ≤7 days.</td></tr>
+      <tr><td>Unknown HBsAg status, BW &lt;2 kg</td><td>HBV + HBIG within 12 hours. The birth dose does NOT count; needs 3 additional doses.</td></tr>
+    </table>
+  </div>
+
+  <h3>MMR / Varicella — Delay After Immunoglobulins</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Product</th><th>Delay MMR by</th><th>Delay Varicella by</th></tr>
+      <tr><td>IVIG (2 g/kg) — e.g., Kawasaki</td><td><span class="hl">11 months</span></td><td>11 months</td></tr>
+      <tr><td>Rabies Immunoglobulin (RIG)</td><td><span class="hl">4 months</span></td><td>4 months</td></tr>
+    </table>
+  </div>
+
+  <h3>Wound Management — Tetanus Prophylaxis</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Tetanus Vaccine History</th><th>Clean, Minor Wounds</th><th>All Other Wounds</th></tr>
+      <tr><td>Unknown or &lt;3 doses</td><td>DTaP</td><td>DTaP</td></tr>
+      <tr><td>≥3 doses</td><td>None if &lt;10 years since last dose</td><td>DTaP if ≥5 years since last dose</td></tr>
+    </table>
+  </div>
+
+  <h3>⭐ Serious AEFI — Reportable Within 24–48 Hours</h3>
+  <div class="alert alert-red">
+    <span class="alert-icon">🚨</span>
+    <div>
+      <strong>Must Memorize — Within 24–48 hours:</strong><br>
+      1. Anaphylactoid reaction (acute hypersensitivity)<br>
+      2. Anaphylaxis<br>
+      3. Persistent (&gt;3 hours) inconsolable screaming<br>
+      4. Hypotonic-Hyporesponsive Episodes (HHE)<br>
+      5. Toxic Shock Syndrome (TSS)
+    </div>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Onset</th><th>AEFI</th></tr>
+      <tr><td>24–48 hours</td><td>Anaphylaxis, anaphylactoid, inconsolable screaming &gt;3 hrs, HHE, TSS</td></tr>
+      <tr><td>7 days</td><td>Severe local reaction, sepsis, injection site abscess</td></tr>
+      <tr><td>14 days</td><td>Seizures/febrile seizures (MMR: 6–12 days; DTP: 0–2 days), Encephalopathy</td></tr>
+      <tr><td>3 months</td><td>Acute flaccid paralysis (OPV: 4–30 days), Brachial neuritis, Intussusception (within 21 days of rotavirus), Thrombocytopenia (15–35 days post MMR)</td></tr>
+      <tr><td>1–12 months after BCG</td><td>Lymphadenitis, disseminated BCG infection, osteitis/osteomyelitis</td></tr>
+      <tr><td>No time limit</td><td>Death, hospitalization, disability</td></tr>
+    </table>
+  </div>
+
+  <h3>Cold Chain</h3>
+  <div class="card-grid">
+    <div class="card">
+      <ul>
+        <li>Temperature-controlled supply chain for vaccines</li>
+        <li><span class="hl">Most vaccines: kept cold but NOT frozen</span></li>
+        <li><span class="hl-red">If frozen → DISCARD</span></li>
+        <li>If briefly exposed to 28–30°C → can still be used</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Contraindications vs Precautions</h4>
+      <ul>
+        <li><strong>Contraindication:</strong> Do NOT give (increases risk of serious adverse reaction)</li>
+        <li><strong>Precaution:</strong> Defer (weigh risk vs benefit). E.g., high fever → defer vaccine</li>
+        <li><strong>Mild illness (cough, colds):</strong> NOT a contraindication — proceed with vaccination</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= RED FLAGS ============================= -->
+<div id="redflags" class="section">
+  <div class="progress-bar"></div>
+  <h2>🚩 Red Flags in Development</h2>
+
+  <div class="alert alert-red">
+    <span class="alert-icon">🚨</span>
+    <div><strong>UNIVERSAL RED FLAG:</strong> The LOSS (regression) of any previously acquired skill at ANY age = IMMEDIATE referral.</div>
+  </div>
+
+  <h3>Gross Motor Red Flags</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Age</th><th>🚩 Red Flag</th><th>Priority</th></tr>
+      <tr><td>Neonatal</td><td>Muscle tone too low to feed</td><td><span class="tag tag-red">High</span></td></tr>
+      <tr><td>2 months</td><td>Cannot raise head when prone</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>9 months</td><td>Inability to sit OR lack of rolling</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>12 months</td><td>Does not stand or bear weight on legs when supported</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>18 months</td><td>Inability to walk independently</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>24 months</td><td>Inability to walk well</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>36 months</td><td>Not jumping with both feet</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>4 years</td><td>Does not jump in place</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>6–12 years</td><td>Does not skip or hop on one foot</td><td><span class="tag tag-blue">Standard</span></td></tr>
+    </table>
+  </div>
+
+  <h3>Fine Motor Red Flags</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Age</th><th>🚩 Red Flag</th><th>Priority</th></tr>
+      <tr><td>4 months</td><td>Unable to bring hands to midline</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>6 months</td><td>Does NOT pass object from one hand to another</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>15 months</td><td>Absence of pincer grasp</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>5 years</td><td>Does not draw pictures; cannot copy square or cross</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>6–12 years</td><td>Does not write name</td><td><span class="tag tag-blue">Standard</span></td></tr>
+    </table>
+  </div>
+
+  <h3>Language &amp; Cognitive Red Flags</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Age</th><th>🚩 Red Flag</th><th>Priority</th></tr>
+      <tr><td>Neonatal</td><td>Does not respond to loud sounds</td><td><span class="tag tag-red">High</span></td></tr>
+      <tr><td>2 months</td><td>Not alert to voice</td><td><span class="tag tag-red">High</span></td></tr>
+      <tr><td>4 months</td><td>No cooing or gurgling sounds</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>6 months</td><td>Lack of turning toward voice</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>9 months</td><td>Not babbling</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>12 months</td><td>Does not respond to name; Does not understand "no"</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>15 months</td><td>Not saying "mama," "dada," or "papa"</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>18 months</td><td>Not using at least 6 words</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>2 years</td><td>No 2-word phrases; cannot follow simple commands</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>3 years</td><td>Inability to use 3-word sentences</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>4 years</td><td>Unclear speech; cannot use pronouns</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>5 years</td><td>Cannot rhyme; cannot recognize shapes, letters, colors</td><td><span class="tag tag-orange">Medium</span></td></tr>
+    </table>
+  </div>
+
+  <h3>Psychosocial Red Flags</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Age</th><th>🚩 Red Flag</th><th>Priority</th></tr>
+      <tr><td>2 months</td><td>Lack of looking at face; lack of fixation</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>4 months</td><td>Not smiling socially</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>6 months</td><td>Not laughing in playful situations</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>9 months</td><td>Absence of back-and-forth smiles/vocalizations</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>12 months</td><td>Indifferent/resistant to caregiver; does not look where caregiver points</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>15 months</td><td>Absence of protoimperative pointing (point to desired object)</td><td><span class="tag tag-red">⭐ High — ASD</span></td></tr>
+      <tr><td>18 months</td><td>Absence of protodeclarative pointing (point to show interest)</td><td><span class="tag tag-red">⭐ High — ASD</span></td></tr>
+      <tr><td>2 years</td><td>Does not imitate actions/words of caregivers; poor eye contact</td><td><span class="tag tag-orange">Medium</span></td></tr>
+      <tr><td>3 years</td><td>Lack of pretend play</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>4 years</td><td>Ignores other children</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+      <tr><td>6–12 years</td><td>Does not name friends; cannot recognize feelings in others</td><td><span class="tag tag-red">⭐ High</span></td></tr>
+    </table>
+  </div>
+
+  <div class="alert alert-purple">
+    <span class="alert-icon">🧩</span>
+    <div><strong>ASD Red Flag Cluster:</strong> Absent joint attention (9 mo) + absent protoimperative pointing (15 mo) + absent protodeclarative pointing (18 mo) + no response to name (12 mo) + poor eye contact (2 yrs) = IMMEDIATE autism screening referral (M-CHAT-R)</div>
+  </div>
+
+  <h3>Quick Algorithm — When to Refer</h3>
+  <div class="algo">
+    <div class="algo-step"><div class="algo-num">1</div><div>Developmental surveillance at EVERY well-child visit (observation + history — no tool)</div></div>
+    <div class="algo-step"><div class="algo-num">2</div><div>Screen at 9, 18, 24 (or 30) months + annually thereafter using PEDS / M-CHAT-R</div></div>
+    <div class="algo-step"><div class="algo-num">3</div><div>Any red flag OR parent concern → formal developmental screening</div></div>
+    <div class="algo-step"><div class="algo-num">4</div><div>Fails screening → refer for comprehensive developmental evaluation (NOT diagnosis yet)</div></div>
+    <div class="algo-step"><div class="algo-num">5</div><div>Loss of any previously acquired skill → IMMEDIATE referral at ANY age</div></div>
+  </div>
+</div>
+
+<!-- ============================= MCQ ============================= -->
+<div id="mcq" class="section">
+  <div class="progress-bar"></div>
+  <h2>📝 MCQ Practice (30 Questions)</h2>
+  <p style="margin-bottom:20px; color:var(--text2);">Click each question to reveal the answer and rationale.</p>
+
+  <!-- Q1 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q1</span> &nbsp;A term newborn's weight at birth is 3.2 kg. After 2 weeks, which of the following weights is most expected?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> 2.8 kg</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> 3.0 kg</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> 3.2 kg</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> 3.5 kg</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — 3.2 kg (exceeds birth weight)</strong><br>After 2 weeks, the newborn should EXCEED its birth weight. The 10–12% weight drop occurs in the first week, then by week 2, birth weight is regained and gains ~30 g/day thereafter.</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q2</span> &nbsp;A mother wants to bond with her newborn. Which behavioral state is BEST for breastfeeding initiation?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Active sleep</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Drowsy</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Quiet Alert</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Fussy</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — Quiet Alert</strong><br>The Quiet Alert state is characterized by still body, bright shiny eyes, and maximum attentiveness. This is the golden window for feeding and social bonding.</div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q3</span> &nbsp;At what age does Object Permanence first appear?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> 4 months</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> 6 months</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> 9 months</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> 12 months</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — 9 months</strong><br>Object permanence (understanding that objects still exist when not seen) emerges at ~9 months and represents the FIRST SIGN OF MEMORY. It coincides with stranger anxiety and improved social communication.</div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q4</span> &nbsp;A 4-year-old boy is asked to copy shapes. Which of the following should he be able to copy?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Circle only</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Circle and triangle</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Cross and square</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Triangle and diamond</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — Cross and Square (48 months/4 years)</strong><br>Memory aid: 3 years = Circle, 4 years = Cross + Square, 5 years = Triangle. The triangle comes at 5 years.</div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q5</span> &nbsp;A child with birth weight of 3.0 kg has a current weight of 9.0 kg. What is the MINIMUM age of this child?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> 4 months</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> 8 months</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> 12 months</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> 18 months</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — 12 months (1 year)</strong><br>Birth weight TRIPLES by 12 months. 3.0 kg × 3 = 9.0 kg. This is a classic high-yield fact.</div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q6</span> &nbsp;The FIRST step in EINC (Unang Yakap) is:</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Early skin-to-skin contact</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Immediate and thorough drying</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Properly-timed cord clamping</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Non-separation for breastfeeding</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — Immediate and thorough drying</strong><br>Common exam trap! The sequence is: Drying → Skin-to-skin → Cord clamping → Non-separation/breastfeeding. Drying comes FIRST, not skin-to-skin.</div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q7</span> &nbsp;ENBS should ideally be performed when?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Immediately at birth</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> After 24 hours of life</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> At 48 hours of life</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> At 7 days of life</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — After 24 hours of life</strong><br>The baby must have ingested milk/protein first for accurate metabolic disorder detection. Doing it too early gives false results. Governed by RA 9288.</div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q8</span> &nbsp;A 15-month-old child does not have a pincer grasp. What is the MOST appropriate next step?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Reassure parents as it is within normal variation</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Refer for comprehensive developmental evaluation</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Repeat assessment in 3 months</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Administer developmental screening only</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — Refer for comprehensive evaluation</strong><br>Absence of pincer grasp at 15 months is a fine motor red flag. Pincer grasp should be present by 12 months (neat pincer grasp). This warrants immediate referral.</div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q9</span> &nbsp;Which growth indicator is BEST for assessing acute malnutrition/wasting independent of age?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Weight-for-age</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Length/Height-for-age</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Weight-for-length/height</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> BMI-for-age</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — Weight-for-length/height</strong><br>WFL/WFH detects wasting (acute malnutrition) and can be used even when exact age is unknown. Length/Height-for-age detects stunting (chronic malnutrition). Weight-for-age detects underweight.</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q10</span> &nbsp;A child &lt;2 years old cannot lie down for measurement. What do you do?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Measure standing height, subtract 0.7 cm</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Measure standing height, add 0.7 cm</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Estimate from weight-for-age chart</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Defer measurement to next visit</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — Standing height + add 0.7 cm</strong><br>Standing height is 0.7 cm LESS than recumbent length. So to convert standing to recumbent: ADD 0.7 cm. To convert recumbent to standing (child ≥2 who can't stand): SUBTRACT 0.7 cm.</div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q11</span> &nbsp;Which vaccine route combination is CORRECT in the Philippines?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> BCG → Intramuscular</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> MMR → Subcutaneous</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> OPV → Intramuscular</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Pentavalent → Intradermal</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — MMR → Subcutaneous</strong><br>MMR is a live attenuated vaccine, given SC. BCG = ID (not IM). OPV = Oral (not IM). Pentavalent = IM (not ID).</div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q12</span> &nbsp;An 18-month-old child does not point to show interest or share attention. This is a red flag for:</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Global developmental delay</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Autism Spectrum Disorder</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Cerebral palsy</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Intellectual disability</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — Autism Spectrum Disorder</strong><br>Absence of protodeclarative pointing (pointing to show interest) at 18 months, combined with absent joint attention at 9 months and absent protoimperative pointing at 15 months, are classic ASD red flags. M-CHAT-R is indicated.</div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q13</span> &nbsp;A newborn's mother is HBsAg positive. What should be done within 12 hours of birth?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Hepatitis B vaccine only</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> HBIG only</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Hepatitis B vaccine + HBIG (0.5 mL)</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Defer until confirmatory testing</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — HBV + HBIG within 12 hours</strong><br>For HBsAg(+) mothers, both HBV vaccine AND HBIG (0.5 mL) are given within 12 hours. Vaccine alone is insufficient. HBIG not later than 7 days if not immediately available.</div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q14</span> &nbsp;A 9-month-old presents for measles vaccination with mild cough and colds. What is the appropriate management?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Defer until symptoms resolve</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Give antibiotics first</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Proceed with vaccination</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Refer to hospital</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — Proceed with vaccination</strong><br>Mild acute illness (mild cough, colds, low-grade fever) is NOT a contraindication. Only severe febrile illness, anaphylaxis to vaccine components, or encephalopathy warrants deferral.</div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q15</span> &nbsp;Standardized developmental screening is recommended by PPS at which ages?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> 3, 6, 9, 12 months</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> 6, 12, 18, 24 months</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> 9, 18, 24 (or 30) months + yearly</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Yearly starting at birth</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — 9, 18, 24 (or 30) months, then yearly</strong><br>These specific ages are chosen because key developmental milestones and early signs of ASD can be detected. At 18 and 24 months, ASD-specific screening (M-CHAT-R) should also be administered.</div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q16</span> &nbsp;A toddler uses a banana as a telephone during play. This is an example of:</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Symbolic transformation (18–24 months)</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Egocentric symbolic play (12–18 months)</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Associate play</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Pre-operational magical thinking</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — Egocentric Symbolic Play (12–18 months)</strong><br>Using objects for their intended purpose relative to the child's OWN body (e.g., comb for own hair, banana as telephone) = egocentric symbolic play at 12–18 months. When play extends to OTHERS (e.g., feeding doll) = symbolic transformation at 18–24 months.</div>
+  </div>
+
+  <!-- Q17 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q17</span> &nbsp;Blood pressure monitoring in children should begin annually at what age?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> 1 year</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> 2 years</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> 3 years</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> 5 years</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — 3 years</strong><br>Annual blood pressure monitoring begins at age 3 or earlier for high-risk conditions. High-risk conditions include prematurity, low birth weight, congenital heart disease, renal disease, and obesity.</div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q18</span> &nbsp;A child's Rotavirus vaccine last dose was NOT administered beyond the recommended maximum age. What is the main reason for this strict age limit?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Increased risk of anaphylaxis</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Decreased immune response</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Risk of intussusception</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Risk of febrile seizures</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — Risk of intussusception</strong><br>Rotavirus vaccine has a strict maximum age limit due to increased risk of intussusception in older infants. Also contraindicated in children with SCID or history of intussusception. RV1: last dose not beyond 24 weeks. RV5 (liquid): not beyond 32 weeks.</div>
+  </div>
+
+  <!-- Q19 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q19</span> &nbsp;A 3-year-old can ride a tricycle, knows his age and sex, counts 3 objects, and most of his speech is intelligible to strangers. What finding would be a RED FLAG at this age?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Cannot copy a square</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Cannot hop on one foot</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Cannot use 3-word sentences</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Cannot name 4 colors</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — Cannot use 3-word sentences</strong><br>By 3 years, children should use 3-word sentences (rule of thumb: words in sentence = age). Inability to use 3-word sentences at 3 years is a language red flag. Copying a square is a 4-year milestone. Hopping is a 4-year milestone. Naming 4 colors is a 5-year milestone.</div>
+  </div>
+
+  <!-- Q20 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q20</span> &nbsp;Which of the following is a SERIOUS AEFI that must be reported within 24–48 hours?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Intussusception</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Lymphadenitis</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Hypotonic-Hyporesponsive Episode (HHE)</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Thrombocytopenia</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — HHE</strong><br>The 24–48 hour AEFIs are: Anaphylaxis, Anaphylactoid reaction, Persistent inconsolable screaming &gt;3 hrs, HHE, and Toxic Shock Syndrome. Intussusception and thrombocytopenia are within 3 months. Lymphadenitis is 1–12 months (BCG-related).</div>
+  </div>
+
+  <!-- Q21 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q21</span> &nbsp;In the Philippines, why are pentavalent vaccines given at 6, 10, 14 weeks instead of 2, 4, 6 months like in the US?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Philippine infants have weaker immune systems</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> To reduce adverse effects</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> To prevent disease early and reduce loss to follow-up</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Cost is lower with earlier vaccination</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — Prevent disease early and reduce loss to follow-up</strong><br>From a public health perspective, PH uses the minimum safe interval (4 weeks) to complete vaccination faster (~4 months vs ~6 months in US), reducing loss to follow-up.</div>
+  </div>
+
+  <!-- Q22 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q22</span> &nbsp;A 5-year-old's immunizations were interrupted at age 2. The next step is:</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Restart the entire vaccine series from the beginning</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Continue (catch-up) from where the series was interrupted</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Wait until adolescence to restart</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Give only the most recent age-appropriate vaccines</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — Continue/catch-up from where interrupted</strong><br>A fundamental rule in vaccinology: interruption NEVER requires restarting the series. The immune system "remembers" prior doses. Always use catch-up schedules for delayed vaccinations.</div>
+  </div>
+
+  <!-- Q23 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q23</span> &nbsp;An infant received MMR at 9 months due to limited vaccine availability. At 12 months, they receive MMR again. Which statement is TRUE?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> The 9-month dose counts as dose 1 of the MMR series</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> The 9-month dose does NOT count; the 12-month dose is dose 1</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Two doses have now been completed</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> No more doses needed</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — The 9-month dose does NOT count</strong><br>Measles (or MMR) given at 9 months is for outbreak/emergency use but does NOT count as part of the routine MMR series. The child still needs 2 scheduled MMR doses at the recommended ages (12 months and 4–6 years).</div>
+  </div>
+
+  <!-- Q24 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q24</span> &nbsp;Parents refuse vaccination due to fear after a vaccine controversy. The most appropriate physician response is:</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Report parents to authorities</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Vaccinate the child against parents' wishes</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Provide evidence-based information and address concerns</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Inform them vaccines are mandated by the government</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — Provide evidence-based information</strong><br>The most ethical approach is to build trust through autonomy and informed consent using evidence-based data, while maintaining the physician-patient relationship. Coercion is not appropriate.</div>
+  </div>
+
+  <!-- Q25 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q25</span> &nbsp;Which is a unique feature of the Philippine NIP compared to the US immunization program?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Use of IPV only</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> BCG vaccination</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> MMR at 12 months</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> RSV vaccine at birth</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — BCG vaccination</strong><br>BCG, Typhoid, Cholera, Rabies, and JEV are unique to the Philippine schedule due to local disease endemicity. The US does not routinely use OPV (only IPV) and includes RSV, COVID-19, Dengue, Mpox vaccines instead.</div>
+  </div>
+
+  <!-- Q26 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q26</span> &nbsp;A mother asks when to schedule her child's first dental visit. You advise:</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> At 3 years old</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> At 2 years old when all teeth erupt</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> When the first tooth erupts (~6 months), no later than 12 months</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> At 18 months</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — First tooth eruption (~6 months), no later than 12 months</strong><br>First dental visit should coincide with first tooth eruption and absolutely no later than 12 months. All 20 primary teeth should erupt by 3 years old.</div>
+  </div>
+
+  <!-- Q27 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q27</span> &nbsp;A 2-year-old child is asked to point at a picture of a dog, and does so correctly. At 19 months, parents noted 2-word phrases. Which of the following would still be expected at this age?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Ability to count 3 objects</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Ability to hop on one foot</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Understanding 2-step commands</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Knowing age and sex</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — Understanding 2-step commands (24 months)</strong><br>At 24 months: 2-step commands (receptive), 2-word sentences (expressive). Counting 3 objects = 36 months. Hopping = 48 months. Knowing age and sex = 36 months.</div>
+  </div>
+
+  <!-- Q28 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q28</span> &nbsp;Exclusive breastfeeding is recommended until what age?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> 2 months</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> 4 months</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> 6 months</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> 12 months</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — 6 months</strong><br>Exclusive breastfeeding (no other food or drink) until 6 months, then continued breastfeeding PLUS complementary feeding up to 2 years and beyond (WHO/PPS recommendation).</div>
+  </div>
+
+  <!-- Q29 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q29</span> &nbsp;A pediatrician observes a child, takes a developmental history, and makes observations without using any standardized tool. This describes:</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> Developmental screening</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> Developmental surveillance</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> Diagnostic developmental evaluation</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> Early intervention</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: B — Developmental surveillance</strong><br>Surveillance = continuous monitoring at every well-child visit using observation, history, documentation — NO standardized tool. Screening uses validated instruments (PEDS, M-CHAT-R) at specific ages.</div>
+  </div>
+
+  <!-- Q30 -->
+  <div class="mcq-card" onclick="toggleMCQ(this)">
+    <div class="mcq-q"><span><span class="qnum">Q30</span> &nbsp;A 6-month-old is receiving IVIG (2 g/kg) for Kawasaki disease. When can MMR be safely administered?</span><span class="mcq-toggle">▾</span></div>
+    <div class="mcq-opts">
+      <div class="mcq-opt"><span class="opt-letter">A</span> 4 months after IVIG</div>
+      <div class="mcq-opt"><span class="opt-letter">B</span> 8 months after IVIG</div>
+      <div class="mcq-opt"><span class="opt-letter">C</span> 11 months after IVIG</div>
+      <div class="mcq-opt"><span class="opt-letter">D</span> No delay needed</div>
+    </div>
+    <div class="mcq-ans"><strong>Answer: C — 11 months after IVIG</strong><br>IVIG (2 g/kg) delays MMR and Varicella by 11 months. Rabies immunoglobulin (RIG) delays MMR/Varicella by 4 months. The concern is that passive antibodies from IVIG will neutralize the live attenuated vaccine.</div>
+  </div>
+
+</div>
+
+<!-- ============================= BUZZWORDS ============================= -->
+<div id="buzzwords" class="section">
+  <div class="progress-bar"></div>
+  <h2>⚡ Buzzwords &amp; High-Yield Summary</h2>
+
+  <h3>Classic Buzzword → Diagnosis/Concept</h3>
+  <div class="buzz-grid">
+    <div class="buzz-item"><div class="buzz-term">Quiet Alert state</div><div class="buzz-def">Best time to interact with newborn / initiate breastfeeding</div></div>
+    <div class="buzz-item"><div class="buzz-term">Habituation</div><div class="buzz-def">↓ response to repeated stimuli, ↑ to novel stimuli — newborn self-regulation</div></div>
+    <div class="buzz-item"><div class="buzz-term">Secure Attachment</div><div class="buzz-def">Consistent meeting of infant's urgent needs → leads to basic trust. Cannot spoil a neonate.</div></div>
+    <div class="buzz-item"><div class="buzz-term">Hatching (4 months)</div><div class="buzz-def">Emerging interest in wider world; self-discovery; coincides with head control</div></div>
+    <div class="buzz-item"><div class="buzz-term">Object Permanence (9 mo)</div><div class="buzz-def">Objects exist even when not seen = first sign of memory. Coincides with stranger anxiety.</div></div>
+    <div class="buzz-item"><div class="buzz-term">Stranger Anxiety (6–12 mo)</div><div class="buzz-def">Normal; avoid direct eye contact, examine on parent's lap, use toys</div></div>
+    <div class="buzz-item"><div class="buzz-term">Separation Anxiety (18–24 mo)</div><div class="buzz-def">Rapprochement; transitional objects function as symbol of absent parent</div></div>
+    <div class="buzz-item"><div class="buzz-term">Terrible Twos</div><div class="buzz-def">Peak autonomy + tantrums 2–4 years. Red flag: &gt;15 min or &gt;3×/day</div></div>
+    <div class="buzz-item"><div class="buzz-term">Egocentrism (2–7 yrs)</div><div class="buzz-def">Cannot take another's POV — NOT selfishness; pre-operational stage</div></div>
+    <div class="buzz-item"><div class="buzz-term">Helicopter Parents</div><div class="buzz-def">Over-nurturing → child feels shame, doubt, insecurity. Toddlers need exploration.</div></div>
+    <div class="buzz-item"><div class="buzz-term">Words = Age rule</div><div class="buzz-def">Number of words in typical sentence = child's age in years</div></div>
+    <div class="buzz-item"><div class="buzz-term">Self-Esteem</div><div class="buzz-def">Central issue in middle childhood (6–11 years)</div></div>
+    <div class="buzz-item"><div class="buzz-term">Joint/Shared Attention (9 mo)</div><div class="buzz-def">Absent in ASD — major red flag for autism screening</div></div>
+    <div class="buzz-item"><div class="buzz-term">Protoimperative pointing (15 mo)</div><div class="buzz-def">Points to desired object — absent = ASD red flag</div></div>
+    <div class="buzz-item"><div class="buzz-term">Protodeclarative pointing (18 mo)</div><div class="buzz-def">Points to show interest — absent = ASD red flag</div></div>
+    <div class="buzz-item"><div class="buzz-term">Leukocoria / White reflex</div><div class="buzz-def">PATHOLOGIC → immediate referral (retinoblastoma until proven otherwise)</div></div>
+    <div class="buzz-item"><div class="buzz-term">Unang Yakap / EINC</div><div class="buzz-def">Steps: DRY → skin-to-skin → cord clamp → non-separation. FIRST = Drying!</div></div>
+    <div class="buzz-item"><div class="buzz-term">ENBS after 24 hours</div><div class="buzz-def">Must ingest protein first for accurate metabolic screening (RA 9288)</div></div>
+    <div class="buzz-item"><div class="buzz-term">OAE — Pass or Refer</div><div class="buzz-def">Non-hospital babies: screen within 3 months. Abnormal → refer before 6 months (RA 9707)</div></div>
+    <div class="buzz-item"><div class="buzz-term">HHE (within 24–48 hrs)</div><div class="buzz-def">Hypotonic-Hyporesponsive Episode = serious AEFI, must report immediately</div></div>
+    <div class="buzz-item"><div class="buzz-term">IVIG → delay MMR 11 months</div><div class="buzz-def">Passive antibodies neutralize live vaccine; RIG = delay 4 months</div></div>
+    <div class="buzz-item"><div class="buzz-term">OPV contraindicated in immunocompromised</div><div class="buzz-def">Live vaccine → risk of vaccine-derived polio. Use IPV instead.</div></div>
+    <div class="buzz-item"><div class="buzz-term">SCID + Intussusception history</div><div class="buzz-def">Absolute contraindications for Rotavirus vaccine</div></div>
+    <div class="buzz-item"><div class="buzz-term">BCG → causes induration</div><div class="buzz-def">Normal reaction: pus at 3 weeks → scar at 2 months. Inform parents!</div></div>
+    <div class="buzz-item"><div class="buzz-term">Never restart vaccine series</div><div class="buzz-def">Always continue (catch-up) from where series was interrupted, regardless of time gap</div></div>
+    <div class="buzz-item"><div class="buzz-term">Growth chart = most powerful tool</div><div class="buzz-def">Sequential measurements (trends) > single measurement. WHO charts recommended.</div></div>
+    <div class="buzz-item"><div class="buzz-term">Tared weighing (&lt;2 years)</div><div class="buzz-def">Weigh mother + child together, subtract mother's weight</div></div>
+    <div class="buzz-item"><div class="buzz-term">Recumbent + 0.7 cm</div><div class="buzz-def">&lt;2 yrs can't lie down → measure standing + add 0.7 cm to get length</div></div>
+    <div class="buzz-item"><div class="buzz-term">Honey → avoid in infants</div><div class="buzz-def">Risk of Clostridium botulinum. No salt either. Introduce foods one by one.</div></div>
+    <div class="buzz-item"><div class="buzz-term">HEEADSSS</div><div class="buzz-def">Adolescent psychosocial assessment — done ALONE without parents. PHQ-9 from age 12.</div></div>
+    <div class="buzz-item"><div class="buzz-term">Midparental height</div><div class="buzz-def">Boys: (dad + mom + 13 cm)/2. Girls: (dad − 13 cm + mom)/2. Considers genetic potential.</div></div>
+    <div class="buzz-item"><div class="buzz-term">BMI for age</div><div class="buzz-def">Only for ages 2–20. NOT appropriate under 2 years. Screens overweight/obesity.</div></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>One-Liner High-Yield Facts</h3>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>Fact</th><th>Value</th></tr>
+        <tr><td>Period of FASTEST postnatal growth</td><td><span class="hl">Neonatal period</span></td></tr>
+        <tr><td>Birth weight ×2</td><td>4 months</td></tr>
+        <tr><td>Birth weight ×3</td><td>12 months (1 year)</td></tr>
+        <tr><td>Birth weight ×4</td><td>2.5 years</td></tr>
+        <tr><td>Walking milestone</td><td>12 months</td></tr>
+        <tr><td>First real word</td><td>12 months</td></tr>
+        <tr><td>2-word sentences</td><td>19 months (corresponds to 50-word vocab)</td></tr>
+        <tr><td>Handedness established</td><td>3 years</td></tr>
+        <tr><td>All 20 primary teeth erupted</td><td>3 years</td></tr>
+        <tr><td>First tooth eruption (mandibular central incisors)</td><td>~6 months</td></tr>
+        <tr><td>Bedwetting resolved — Girls</td><td>4 years</td></tr>
+        <tr><td>Bedwetting resolved — Boys</td><td>5 years</td></tr>
+        <tr><td>Visual acuity 20/30 by</td><td>3 years</td></tr>
+        <tr><td>Visual acuity 20/20 by</td><td>4 years</td></tr>
+        <tr><td>Tantrum peak prevalence</td><td>2–4 years</td></tr>
+        <tr><td>Crying peaks at</td><td>6 weeks</td></tr>
+        <tr><td>Crying decreases to ≤1 hr/day by</td><td>3 months</td></tr>
+        <tr><td>Head circumference measured routinely until</td><td>2 years (extend if neuro issues)</td></tr>
+        <tr><td>By 24 months, child achieves</td><td>½ adult height, 90% adult head circumference</td></tr>
+        <tr><td>Screening tool for autism</td><td>M-CHAT-R (18 and 24 months)</td></tr>
+        <tr><td>General developmental screening tool</td><td>PEDS (Parent Evaluation of Developmental Status)</td></tr>
+        <tr><td>First dental visit</td><td>First tooth eruption → no later than 12 months</td></tr>
+        <tr><td>Annual dental visit starts</td><td>Age 1 (then annually)</td></tr>
+        <tr><td>Annual BP monitoring starts</td><td>Age 3</td></tr>
+        <tr><td>Deworming starts</td><td>12 months (every 6 months)</td></tr>
+        <tr><td>Vitamin A for infants 6–11 months</td><td>100,000 IU (single dose)</td></tr>
+        <tr><td>Vitamin A for children 12–59 months</td><td>200,000 IU every 6 months</td></tr>
+        <tr><td>PH complete early vaccines by</td><td>~4 months</td></tr>
+        <tr><td>US complete early vaccines by</td><td>~6 months</td></tr>
+        <tr><td>BCG dose &lt;12 months</td><td>0.05 mL ID</td></tr>
+        <tr><td>BCG dose ≥12 months</td><td>0.10 mL ID</td></tr>
+        <tr><td>Influenza: 1st time vaccination 6 months–8 yrs</td><td>2 doses, 4 weeks apart</td></tr>
+        <tr><td>Influenza: 9–18 years</td><td>1 dose yearly</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Shape Copying — Visual Summary</h3>
+  <div class="card-grid3">
+    <div class="card" style="text-align:center; border-top: 3px solid var(--accent);">
+      <div style="font-size:3rem; margin:10px 0;">⭕</div>
+      <div style="font-size:1.3rem; font-weight:700; color:var(--accent);">3 Years</div>
+      <div style="color:var(--text2);">Circle</div>
+    </div>
+    <div class="card" style="text-align:center; border-top: 3px solid var(--accent4);">
+      <div style="font-size:3rem; margin:10px 0;">✝ ▪</div>
+      <div style="font-size:1.3rem; font-weight:700; color:var(--accent4);">4 Years</div>
+      <div style="color:var(--text2);">Cross + Square</div>
+    </div>
+    <div class="card" style="text-align:center; border-top: 3px solid var(--accent3);">
+      <div style="font-size:3rem; margin:10px 0;">▲</div>
+      <div style="font-size:1.3rem; font-weight:700; color:var(--accent3);">5 Years</div>
+      <div style="color:var(--text2);">Triangle</div>
+    </div>
+  </div>
+
+  <h3>Gross Motor — Visual Mnemonic</h3>
+  <div class="card">
+    <div class="timeline">
+      <div class="tl-item"><span class="tl-age">2 months</span> — Holds head steady ⭐</div>
+      <div class="tl-item"><span class="tl-age">4 months</span> — HATCHING (self-discovery) ⭐</div>
+      <div class="tl-item"><span class="tl-age">6 months</span> — Sits without support ⭐</div>
+      <div class="tl-item"><span class="tl-age">9 months</span> — Object permanence + Stranger anxiety ⭐</div>
+      <div class="tl-item"><span class="tl-age">12 months</span> — WALKS 🚶 + First word 🗣️ + Weight ×3 ⭐</div>
+      <div class="tl-item"><span class="tl-age">18 months</span> — Runs; 10–15 words ⭐</div>
+      <div class="tl-item"><span class="tl-age">24 months</span> — Stairs (1-step); 2-word sentences ⭐</div>
+      <div class="tl-item"><span class="tl-age">3 years</span> — Tricycle + 1-foot stand + Circle 🔵</div>
+      <div class="tl-item"><span class="tl-age">4 years</span> — Hop + Cross/Square ✝</div>
+      <div class="tl-item"><span class="tl-age">5 years</span> — Skip + Triangle ▲</div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMCQ(card) {
+  card.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
